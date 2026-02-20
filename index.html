@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Haji Kochai System</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; padding: 50px; }
+        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline-block; }
+        input { padding: 10px; margin: 10px; width: 80%; border: 1px solid #ccc; }
+        button { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>د حاجي کوچي مالي سیسټم</h2>
+        <input type="password" id="p" placeholder="پاسورډ داخل کړئ">
+        <br>
+        <button onclick="go()">ننوتل</button>
+    </div>
+    <script>
+        function go() {
+            if(document.getElementById('p').value === "1234") {
+                alert("ښه راغلاست! سیسټم اوس کار کوي.");
+                window.location.href = "https://google.com"; // دا یوازې د ټیسټ لپاره
+            } else { alert("غلط دی!"); }
+        }
+    </script>
+</body>
+</html>
