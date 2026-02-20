@@ -15,6 +15,7 @@
         .item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; }
         .red { color: #d93025; font-weight: bold; }
         .green { color: #1e8e3e; font-weight: bold; }
+        .hidden { display: none; }
         @media print { .no-print { display: none; } .container { box-shadow: none; width: 100%; } }
         .footer-print { display: none; margin-top: 50px; }
         @media print { .footer-print { display: flex; justify-content: space-between; } }
@@ -24,12 +25,14 @@
 
 <div id="login-page" class="container" style="margin-top: 50px;">
     <h2 style="text-align:center;">Haji Kochai Ltd</h2>
-    <input type="password" id="p" placeholder="پاسورډ داخل کړئ">
-    <button onclick="login()">داخلېدل</button>
+    <p style="text-align:center;">خپل پاسورډ ولیکئ:</p>
+    <input type="password" id="p" placeholder="پاسورډ (1234)">
+    <button type="button" onclick="login()">داخلېدل</button>
 </div>
 
-<div id="app" class="container" style="display:none;">
+<div id="app" class="container hidden">
     <div class="header">
+        <img src="Logo.png" style="width:70px; height:70px; border-radius:50%;" onerror="this.style.display='none'">
         <h2>Haji Kochai Oil & Sugar Ltd</h2>
         <p>د مالي حساباتو سیسټم</p>
     </div>
@@ -40,11 +43,10 @@
     </div>
 
     <div class="no-print">
-        <input type="text" id="desc" placeholder="د معاملې تفصیل (مثلاً: د بورې پلور)">
+        <input type="text" id="desc" placeholder="د معاملې تفصیل">
         <input type="number" id="amt" placeholder="مقدار (مثلاً: 500 یا -200)">
-        <button onclick="addEntry()">ثبتول</button>
-        <button onclick="window.print()" style="background:#1e8e3e;">راپور چاپول</button>
-        <button onclick="clearData()" style="background:#5f6368; font-size: 12px;">پاکول</button>
+        <button type="button" onclick="addEntry()">ثبتول</button>
+        <button type="button" onclick="window.print()" style="background:#1e8e3e;">راپور چاپول</button>
     </div>
 
     <div id="list">
@@ -54,21 +56,26 @@
 
     <div class="footer-print">
         <div style="text-align:center;"><p>مالي مدیر</p><br>______</div>
-        <div style="text-align:center;"><p>Nesar Ahmad Kochai</p><br>______</div>
+        <div style="text-align:center;"><img src="Stamp.png" style="width:80px;" onerror="this.style.display='none'"><p>Nesar Ahmad Kochai</p></div>
     </div>
 </div>
 
 <script>
     let entries = JSON.parse(localStorage.getItem('kochai_v1')) || [];
     
+    // د ننوتلو فنکشن
     function login() {
-        if(document.getElementById('p').value === "1234") {
-            document.getElementById('login-page').style.display = 'none';
-            document.getElementById('app').style.display = 'block';
+        const pass = document.getElementById('p').value;
+        if(pass === "1234") {
+            document.getElementById('login-page').classList.add('hidden');
+            document.getElementById('app').classList.remove('hidden');
             updateUI();
-        } else { alert("غلط پاسورډ!"); }
+        } else {
+            alert("غلط پاسورډ!");
+        }
     }
 
+    // د معاملې ثبتول
     function addEntry() {
         const desc = document.getElementById('desc').value;
         const amt = parseFloat(document.getElementById('amt').value);
@@ -77,10 +84,12 @@
         entries.push({ desc, amt, date: new Date().toLocaleDateString() });
         localStorage.setItem('kochai_v1', JSON.stringify(entries));
         updateUI();
+        
         document.getElementById('desc').value = '';
         document.getElementById('amt').value = '';
     }
 
+    // د تاریخچې او مجموعې تازه کول
     function updateUI() {
         const list = document.getElementById('history-items');
         list.innerHTML = '';
@@ -93,14 +102,6 @@
             </div>`;
         });
         document.getElementById('total-display').innerText = total.toFixed(2) + ' $';
-    }
-
-    function clearData() {
-        if(confirm("ایا غواړئ ټول حسابونه پاک کړئ؟")) {
-            localStorage.removeItem('kochai_v1');
-            entries = [];
-            updateUI();
-        }
     }
 </script>
 </body>
