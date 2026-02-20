@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haji Kochai System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; text-align: center; }
+        .box { background: white; padding: 20px; border-radius: 10px; max-width: 500px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, button { width: 95%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; }
+        button { background: #1a73e8; color: white; border: none; font-weight: bold; cursor: pointer; }
+        .item { display: flex; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; text-align: right; }
+        .hidden { display: none; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+
+<div id="login" class="box">
+    <img src="Logo.png" width="80" onerror="this.style.display='none'">
+    <h2>Haji Kochai Ltd</h2>
+    <input type="password" id="pass" placeholder="پاسورډ: 1234">
+    <button onclick="check()">ننوتل</button>
+</div>
+
+<div id="app" class="box hidden">
+    <img src="Logo.png" width="60" onerror="this.style.display='none'">
+    <h3>مالي راپور</h3>
+    <h1 id="total">0.00 $</h1>
+    <div class="no-print">
+        <input type="text" id="desc" placeholder="تفصیل">
+        <input type="number" id="amt" placeholder="مقدار">
+        <button onclick="add()" style="background:#28a745">ثبتول</button>
+        <button onclick="window.print()" style="background:#555">چاپول</button>
+    </div>
+    <hr>
+    <div id="list"></div>
+    <div style="margin-top:30px">
+        <img src="Stamp.png" width="100" onerror="this.style.display='none'"><br>
+        <small>رسمي مهر</small>
+    </div>
+</div>
+
+<script>
+    let data = JSON.parse(localStorage.getItem('k_data')) || [];
+    function check() {
+        if(document.getElementById('pass').value === "1234") {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('app').classList.remove('hidden');
+            show();
+        } else { alert("غلط دی!"); }
+    }
+    function add() {
+        let d = document.getElementById('desc').value;
+        let a = parseFloat(document.getElementById('amt').value);
+        if(d && a) {
+            data.push({d, a});
+            localStorage.setItem('k_data', JSON.stringify(data));
+            show();
+            document.getElementById('desc').value = '';
+            document.getElementById('amt').value = '';
+        }
+    }
+    function show() {
+        let list = document.getElementById('list');
+        list.innerHTML = '';
+        let t = 0;
+        data.forEach(x => {
+            t += x.a;
+            list.innerHTML += `<div class="item"><span>${x.d}</span><b>${x.a} $</b></div>`;
+        });
+        document.getElementById('total').innerText = t.toFixed(2) + " $";
+    }
+</script>
+
+</body>
+</html>
