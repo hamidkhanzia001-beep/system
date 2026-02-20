@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+
+<html dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haji Kochai</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --g:#16a34a;--g2:#22c55e;--g3:#dcfce7;
+  --r:#dc2626;--r2:#ef4444;--r3:#fee2e2;
+  --b:#2563eb;--b2:#3b82f6;--b3:#dbeafe;
+  --y:#d97706;--y3:#fef3c7;
+  --pu:#7c3aed;
+  --dk:#0f172a;--dk2:#1e293b;--dk3:#334155;
+  --gr:#64748b;--lt:#f8fafc;--wh:#ffffff;
+  --br:#e2e8f0;--sh:0 4px 24px rgba(0,0,0,.08);
+  --rad:16px;--rad2:12px;--rad3:8px;
+}
+body{font-family:'Inter',Arial,sans-serif;background:#f1f5f9;min-height:100vh;color:var(--dk);}
+body.en{direction:ltr;}
+body.ps{direction:rtl;}
+body.fa{direction:rtl;}
+
+/* ===== HERO BANNER ===== */
+.hero-banner{background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 40%,#16213e 70%,#0f3460 100%);padding:0;position:relative;overflow:hidden;}
+.hero-banner::before{content:ââ;position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(22,163,74,.15) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(234,179,8,.1) 0%,transparent 60%);}
+
+/* Products showcase */
+.products-row{display:flex;align-items:center;justify-content:center;gap:0;padding:18px 16px 14px;position:relative;z-index:2;}
+.product-item{text-align:center;flex:1;max-width:140px;}
+.product-visual{position:relative;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;}
+
+/* Oil can SVG styling */
+.oil-can{width:70px;height:90px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5));}
+.sugar-box{width:75px;height:88px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5));}
+
+.product-name{font-size:11px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.5px;}
+.product-sub{font-size:10px;color:rgba(255,255,255,.5);margin-top:2px;}
+
+.brand-center{text-align:center;padding:0 10px;position:relative;z-index:2;}
+.brand-icon{width:50px;height:50px;background:linear-gradient(135deg,var(âg),var(âg2));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 8px;box-shadow:0 6px 20px rgba(22,163,74,.4);}
+.brand-name{font-size:13px;font-weight:900;color:white;letter-spacing:.5px;line-height:1.3;}
+.brand-tagline{font-size:10px;color:rgba(255,255,255,.5);margin-top:3px;}
+
+/* decorative dots */
+.dots{position:absolute;inset:0;z-index:1;overflow:hidden;}
+.dot{position:absolute;border-radius:50%;background:rgba(255,255,255,.03);}
+
+/* ===== TOP BAR ===== */
+.top-bar{background:rgba(0,0,0,.4);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08);padding:10px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.lang-switcher{display:flex;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.15);}
+.lang-btn{padding:5px 12px;border:none;background:transparent;color:rgba(255,255,255,.6);font-size:11px;font-weight:700;cursor:pointer;transition:all .25s;white-space:nowrap;}
+.lang-btn.on{background:var(âg);color:white;}
+.rate-wrap{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:5px 9px;}
+.rate-wrap span{color:rgba(255,255,255,.6);font-size:11px;}
+.rate-inp{width:50px;background:transparent;border:none;color:white;font-size:12px;font-weight:700;text-align:center;direction:ltr;outline:none;}
+
+/* ===== BALANCE CARD ===== */
+.bal-card{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);margin:12px;border-radius:20px;padding:18px;color:white;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.2);}
+.bal-card::before{content:ââ;position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(255,255,255,.04);border-radius:50%;}
+.bal-lbl{font-size:11px;color:rgba(255,255,255,.6);margin-bottom:5px;}
+.bal-amt{font-size:32px;font-weight:900;letter-spacing:-1px;transition:color .3s;}
+.bal-amt.pos{color:#4ade80;} .bal-amt.neg{color:#f87171;} .bal-amt.zero{color:white;}
+.bal-sub{font-size:12px;color:rgba(255,255,255,.45);margin-top:3px;}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 12px 12px;}
+.stat{background:white;border-radius:var(ârad2);padding:13px;box-shadow:var(âsh);position:relative;overflow:hidden;}
+.stat::before{content:ââ;position:absolute;top:0;right:0;width:4px;height:100%;border-radius:0 var(ârad2) var(ârad2) 0;}
+body.en .stat::before{right:auto;left:0;border-radius:var(ârad2) 0 0 var(ârad2);}
+.stat.sg::before{background:var(âg);}
+.stat.sr::before{background:var(âr);}
+.stat.st::before{background:#0d9488;}
+.stat.sa::before{background:var(ây);}
+.stat-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.stat-ico{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.ico-g{background:var(âg3);} .ico-r{background:var(âr3);} .ico-t{background:#ccfbf1;} .ico-a{background:var(ây3);}
+.stat-lbl{font-size:10px;color:var(âgr);font-weight:600;}
+.stat-val{font-size:15px;font-weight:800;}
+
+/* ===== NAV ===== */
+.nav{background:white;border-bottom:1px solid var(âbr);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 8px;}
+.nav::-webkit-scrollbar{display:none;}
+.ntab{padding:12px 13px;border:none;background:transparent;font-size:11px;font-weight:700;color:var(âgr);border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer;transition:all .25s;margin-bottom:-1px;}
+.ntab.on{color:var(âg);border-bottom-color:var(âg);}
+
+.tb{display:none;padding:16px;background:white;min-height:50vh;}
+.tb.on{display:block;}
+
+/* ===== FORM ===== */
+.sec-title{font-size:14px;font-weight:800;color:var(âdk);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.sec-title::before{content:ââ;display:block;width:4px;height:18px;background:linear-gradient(var(âg),var(âg2));border-radius:4px;}
+body.en .sec-title{flex-direction:row;}
+.fl{display:block;font-size:11px;font-weight:700;color:var(âdk3);margin-bottom:4px;}
+.fi{width:100%;padding:10px 12px;border:1.5px solid var(âbr);border-radius:var(ârad3);font-size:13px;background:var(âlt);color:var(âdk);transition:all .2s;}
+.fi:focus{outline:none;border-color:var(âg2);background:white;box-shadow:0 0 0 3px rgba(34,197,94,.1);}
+.fg{margin-bottom:11px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.btn-s{width:100%;padding:12px;border:none;border-radius:var(ârad3);font-size:13px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,var(âg),var(âg2));color:white;margin-top:4px;box-shadow:0 4px 12px rgba(22,163,74,.3);}
+.btn-s:active{transform:scale(.98);}
+
+/* ===== ITEM CARDS ===== */
+.ic{background:var(âlt);border-radius:var(ârad2);padding:12px;margin-bottom:9px;border:1px solid var(âbr);transition:all .2s;position:relative;}
+.ic:hover{box-shadow:var(âsh);border-color:var(âg2);}
+.ic-bar{position:absolute;top:0;right:0;width:4px;height:100%;border-radius:0 var(ârad2) var(ârad2) 0;}
+body.en .ic-bar{right:auto;left:0;border-radius:var(ârad2) 0 0 var(ârad2);}
+.ic-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px;}
+.ic-name{font-size:13px;font-weight:700;}
+.ic-amt{font-size:14px;font-weight:800;}
+.ic-meta{font-size:11px;color:var(âgr);}
+.ic-acts{margin-top:7px;}
+.btn-del{padding:4px 11px;background:var(âr3);color:var(âr);border:none;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;}
+.empty-box{text-align:center;padding:35px 20px;color:var(âgr);}
+.empty-box .ei{font-size:38px;margin-bottom:8px;opacity:.4;}
+
+/* ===== P&L ===== */
+.pl-hero{background:linear-gradient(135deg,var(âdk2),var(âdk));border-radius:var(ârad);padding:16px;color:white;margin-bottom:12px;}
+.pl-badge{display:inline-block;background:var(âg);color:white;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.pl-g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:11px;}
+.pl-box{background:rgba(255,255,255,.08);border-radius:10px;padding:11px;text-align:center;}
+.pl-bl{font-size:10px;opacity:.7;margin-bottom:3px;}
+.pl-bv{font-size:15px;font-weight:800;}
+.pl-net{border-radius:11px;padding:13px;text-align:center;}
+.pl-net.profit{background:rgba(74,222,128,.15);border:2px solid rgba(74,222,128,.4);}
+.pl-net.loss{background:rgba(248,113,113,.15);border:2px solid rgba(248,113,113,.4);}
+.pl-net.zero{background:rgba(251,191,36,.1);border:2px solid rgba(251,191,36,.3);}
+.pl-nl{font-size:12px;opacity:.8;margin-bottom:4px;}
+.pl-nv{font-size:26px;font-weight:900;}
+.bkd{background:var(âlt);border:1px solid var(âbr);border-radius:var(ârad2);padding:13px;margin-bottom:11px;}
+.bkd-t{font-size:12px;font-weight:700;color:var(âdk);margin-bottom:11px;display:flex;align-items:center;gap:6px;}
+.bkd-t::before{content:ââ;width:3px;height:13px;background:var(âb2);border-radius:4px;display:block;}
+.bd-r{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px dashed var(âbr);font-size:12px;}
+.bd-r:last-child{border-bottom:none;}
+.bd-l{color:var(âgr);}
+.bd-v{font-weight:700;}
+.pos{color:var(âg);} .neg{color:var(âr);} .neu{color:var(ây);}
+.bd-r.tot{background:var(âbr);border-radius:8px;padding:9px;margin-top:3px;}
+.ob-card{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:var(ârad);padding:15px;color:white;margin-bottom:13px;}
+.ob-inp{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 12px;color:white;font-size:13px;width:100%;}
+.ob-inp:focus{outline:none;border-color:var(âg2);}
+.ob-sel{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px;color:white;font-size:13px;width:100%;}
+.ob-sel option{color:black;}
+.btn-ob{width:100%;padding:10px;background:var(âg);border:none;border-radius:8px;color:white;font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;}
+.ob-st{text-align:center;margin-top:7px;font-size:12px;font-weight:700;min-height:16px;}
+.src-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:13px;}
+.src-c{background:white;border:1px solid var(âbr);border-radius:var(ârad2);padding:11px;text-align:center;box-shadow:var(âsh);}
+.src-ic{font-size:18px;margin-bottom:3px;}
+.src-l{font-size:10px;color:var(âgr);margin-bottom:2px;}
+.src-v{font-size:12px;font-weight:700;}
+
+/* ===== PAYMENT ===== */
+.pay-s{border-radius:var(ârad);padding:15px;margin-bottom:13px;color:white;}
+.pay-s.py{background:linear-gradient(135deg,#991b1b,var(âr2));}
+.pay-s.rc{background:linear-gradient(135deg,#14532d,var(âg2));}
+.pay-s h3{font-size:13px;font-weight:700;margin-bottom:11px;}
+.pi{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:9px;color:white;font-size:13px;width:100%;margin-bottom:7px;}
+.pi::placeholder{color:rgba(255,255,255,.5);}
+.pi:focus{outline:none;border-color:rgba(255,255,255,.6);}
+.btn-py{width:100%;padding:10px;background:white;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;margin-top:3px;}
+
+/* ===== STMT ===== */
+.stmt-wrap{background:white;border-radius:var(ârad);padding:16px;box-shadow:var(âsh);margin-top:13px;}
+.stmt-hdr{text-align:center;border-bottom:2px solid var(âdk2);padding-bottom:13px;margin-bottom:14px;}
+.stmt-co{font-size:15px;font-weight:900;}
+.stmt-ttl{font-size:12px;font-weight:700;color:var(âb);margin:3px 0;}
+.stmt-sum3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:13px;}
+.ss-c{border-radius:9px;padding:10px;text-align:center;}
+.ss-c.op{background:var(âb);color:white;}
+.ss-c.cl{background:var(âg);color:white;}
+.ss-c.md{background:var(âlt);border:1px solid var(âbr);}
+.ss-l{font-size:9px;opacity:.8;margin-bottom:3px;}
+.ss-v{font-size:13px;font-weight:800;}
+.stmt-tbl{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:13px;}
+.stmt-tbl thead{background:var(âdk2);color:white;}
+.stmt-tbl th{padding:8px 5px;text-align:center;}
+.stmt-tbl td{padding:7px 5px;text-align:center;border-bottom:1px solid var(âbr);}
+.stmt-tbl tr:nth-child(even) td{background:var(âlt);}
+.stmt-tbl .cr td{background:var(âdk3)!important;color:white;font-weight:700;}
+.dbt{color:var(âr);font-weight:700;} .cdt{color:var(âg);font-weight:700;}
+.btn-print{background:linear-gradient(135deg,var(âpu),#9333ea);color:white;border:none;padding:10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;margin-top:9px;width:100%;}
+.rep-r{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(âbr);font-size:13px;}
+.rep-r:last-child{border-bottom:none;}
+.rep-l{color:var(âgr);}
+.btn-act{width:100%;padding:12px;border:none;border-radius:var(ârad3);font-size:13px;font-weight:700;cursor:pointer;margin-top:7px;}
+.cat-badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700;background:var(âb3);color:var(âb);}
+.clg{color:var(âg);} .clr{color:var(âr);} .clt{color:#0d9488;} .cla{color:var(ây);}
+</style>
+
+</head>
+<body class="ps">
+
+<!-- ===== HERO BANNER ===== -->
+
+<div class="hero-banner">
+  <div class="dots">
+    <div class="dot" style="width:200px;height:200px;top:-60px;right:-40px;"></div>
+    <div class="dot" style="width:150px;height:150px;bottom:-40px;left:-30px;"></div>
+  </div>
+  <div class="products-row">
+    <!-- Oil Can -->
+    <div class="product-item">
+      <div class="product-visual">
+        <svg class="oil-can" viewBox="0 0 70 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Can body -->
+          <rect x="8" y="22" width="54" height="60" rx="5" fill="url(#canGrad)"/>
+          <!-- Can shine -->
+          <rect x="12" y="26" width="8" height="50" rx="4" fill="rgba(255,255,255,.15)"/>
+          <!-- Label area -->
+          <rect x="12" y="35" width="46" height="32" rx="3" fill="rgba(0,0,0,.3)"/>
+          <!-- Label text line -->
+          <rect x="17" y="41" width="36" height="3" rx="1.5" fill="rgba(255,255,255,.7)"/>
+          <rect x="22" y="47" width="26" height="2" rx="1" fill="rgba(255,255,255,.4)"/>
+          <rect x="19" y="53" width="32" height="2" rx="1" fill="rgba(255,255,255,.3)"/>
+          <!-- Oil drop icon on label -->
+          <ellipse cx="35" cy="44" rx="3" ry="3" fill="#fbbf24"/>
+          <!-- Handle -->
+          <path d="M25 22 Q35 10 45 22" stroke="#e2e8f0" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <!-- Spout -->
+          <rect x="52" y="14" width="14" height="8" rx="4" fill="#94a3b8"/>
+          <rect x="60" y="10" width="6" height="12" rx="3" fill="#64748b"/>
+          <!-- Bottom -->
+          <rect x="8" y="78" width="54" height="4" rx="2" fill="rgba(0,0,0,.2)"/>
+          <!-- Gold band top -->
+          <rect x="8" y="22" width="54" height="5" rx="2" fill="#fbbf24"/>
+          <!-- Gold band bottom -->
+          <rect x="8" y="77" width="54" height="5" rx="2" fill="#fbbf24"/>
+          <defs>
+            <linearGradient id="canGrad" x1="0" y1="0" x2="70" y2="0">
+              <stop offset="0%" stop-color="#1e3a5f"/>
+              <stop offset="50%" stop-color="#2563eb"/>
+              <stop offset="100%" stop-color="#1e3a5f"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="product-name" id="prd1">Ø¯ ØºÙÚÙ ÚØ¨Ù</div>
+      <div class="product-sub">10 Litre</div>
+    </div>
+
+```
+<!-- Brand Center -->
+<div class="brand-center">
+  <div class="brand-icon">ð¢ï¸</div>
+  <div class="brand-name">HAJI KOCHAI</div>
+  <div class="brand-tagline" id="brandTag">OIL & SUGAR LTD</div>
+</div>
+
+<!-- Sugar Parcel -->
+<div class="product-item">
+  <div class="product-visual">
+    <svg class="sugar-box" viewBox="0 0 75 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bag body -->
+      <rect x="8" y="18" width="59" height="62" rx="6" fill="url(#sugarGrad)"/>
+      <!-- Bag shine -->
+      <rect x="12" y="22" width="7" height="52" rx="3.5" fill="rgba(255,255,255,.2)"/>
+      <!-- Label -->
+      <rect x="13" y="30" width="49" height="38" rx="4" fill="rgba(255,255,255,.95)"/>
+      <!-- Label content -->
+      <rect x="18" y="36" width="39" height="3" rx="1.5" fill="#1e293b"/>
+      <rect x="23" y="42" width="29" height="2" rx="1" fill="#64748b"/>
+      <!-- Sugar crystal icon -->
+      <polygon points="37,50 40,56 34,56" fill="#f59e0b"/>
+      <polygon points="33,52 36,58 30,58" fill="#fbbf24"/>
+      <polygon points="41,52 44,58 38,58" fill="#fde68a"/>
+      <!-- Tie at top -->
+      <ellipse cx="37" cy="18" rx="12" ry="5" fill="#d97706"/>
+      <rect x="34" y="8" width="6" height="12" rx="3" fill="#f59e0b"/>
+      <!-- Bottom fold -->
+      <path d="M8 74 Q37 80 67 74 L67 80 Q37 86 8 80 Z" fill="rgba(0,0,0,.15)"/>
+      <!-- White band top -->
+      <rect x="8" y="18" width="59" height="5" rx="3" fill="white" opacity=".3"/>
+      <defs>
+        <linearGradient id="sugarGrad" x1="0" y1="0" x2="75" y2="0">
+          <stop offset="0%" stop-color="#92400e"/>
+          <stop offset="50%" stop-color="#d97706"/>
+          <stop offset="100%" stop-color="#92400e"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="product-name" id="prd2">Ø¯ Ø¨ÙØ±Û Ù¾Ø§Ø±Ø³Ù</div>
+  <div class="product-sub">50 KG</div>
+</div>
+```
+
+  </div>
+
+  <!-- Top bar inside banner -->
+
+  <div class="top-bar">
+    <div class="lang-switcher">
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn on" onclick="setLang('ps')">Ù¾ÚØªÙ</button>
+      <button class="lang-btn" onclick="setLang('fa')">Ø¯Ø±Û</button>
+    </div>
+    <div class="rate-wrap">
+      <span id="lb_rate">$1=</span>
+      <input type="number" class="rate-inp" id="exchangeRate" value="72" min="1" onchange="rateChanged()">
+      <span>Ø</span>
+    </div>
+  </div>
+</div>
+
+<!-- BALANCE -->
+
+<div class="bal-card">
+  <div class="bal-lbl" id="lb_finalBal">ÙØ±ÙØ³ØªÛ Ù¾Ø§ÛÙÙ</div>
+  <div class="bal-amt zero" id="heroAmt">$0.00</div>
+  <div class="bal-sub" id="heroSub">Ø 0</div>
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+  <div class="stat sg"><div class="stat-head"><div class="stat-ico ico-g">ð°</div><div class="stat-lbl" id="lb_assets">Ù¼ÙÙÛ Ø´ØªÙÙÛ</div></div><div class="stat-val clg" id="s_a">$0</div></div>
+  <div class="stat sr"><div class="stat-head"><div class="stat-ico ico-r">â</div><div class="stat-lbl" id="lb_debts">Ù¼ÙÙ Ù¾ÙØ±ÙÙÙ</div></div><div class="stat-val clr" id="s_d">$0</div></div>
+  <div class="stat st"><div class="stat-head"><div class="stat-ico ico-t">ð¦</div><div class="stat-lbl" id="lb_stock">Ø¯ ØªÙÚ©Ù Ø§Ø±Ø²ÚØª</div></div><div class="stat-val clt" id="s_m">$0</div></div>
+  <div class="stat sa"><div class="stat-head"><div class="stat-ico ico-a">ð¸</div><div class="stat-lbl" id="lb_expenses">Ù¼ÙÙ ÙÚ«ÚØªÙÙÙ</div></div><div class="stat-val cla" id="s_e">$0</div></div>
+</div>
+
+<!-- NAV -->
+
+<div class="nav">
+  <button class="ntab on" id="nt0" onclick="switchTab('debtors',this)">ð¢ <span class="nt" id="lb_nt0">Ø²ÙØ§ Ù¾Ø± ÚØ§</span></button>
+  <button class="ntab" id="nt1" onclick="switchTab('creditors',this)">ð´ <span class="nt" id="lb_nt1">Ø²ÙØ§ Ø¨Ø§ÙØ¯Û</span></button>
+  <button class="ntab" id="nt2" onclick="switchTab('commodities',this)">ð¦ <span class="nt" id="lb_nt2">ØªÙÚ©Ù</span></button>
+  <button class="ntab" id="nt3" onclick="switchTab('profitloss',this)">ð <span class="nt" id="lb_nt3">Ú«Ù¼Ù/Ø²ÛØ§Ù</span></button>
+  <button class="ntab" id="nt4" onclick="switchTab('expenses',this)">ð¸ <span class="nt" id="lb_nt4">ÙÚ«ÚØªÙÙÙ</span></button>
+  <button class="ntab" id="nt5" onclick="switchTab('payments',this)">ð° <span class="nt" id="lb_nt5">ØªØ§Ø¯ÛØ§Øª</span></button>
+  <button class="ntab" id="nt6" onclick="switchTab('transactions',this)">ð <span class="nt" id="lb_nt6">ÙØ¹Ø§ÙÙØ§Øª</span></button>
+  <button class="ntab" id="nt7" onclick="switchTab('statements',this)">ð <span class="nt" id="lb_nt7">Ø³Ù¼ÛÙ¼ÙÙÙ¼</span></button>
+  <button class="ntab" id="nt8" onclick="switchTab('reports',this)">ð <span class="nt" id="lb_nt8">Ø±Ø§Ù¾ÙØ±</span></button>
+</div>
+
+<!-- DEBTORS TAB -->
+
+<div id="tab_debtors" class="tb on">
+  <div class="sec-title" id="lb_st0">Ø²ÙØ§ Ø¯ ÙØ·Ø§ÙØ¨Ø§ØªÙ ÙÛØ³Øª</div>
+  <form onsubmit="addDebtor(event)">
+    <div class="fg"><label class="fl" id="lb_dname">Ø¯ Ø´Ø®Øµ ÙÙÙ</label><input class="fi" id="dname" required></div>
+    <div class="g2">
+      <div class="fg"><label class="fl" id="lb_damt">ÙÙØ¯Ø§Ø± $</label><input type="number" class="fi" id="damt" placeholder="0" required></div>
+      <div class="fg"><label class="fl" id="lb_ddate">ÙÛÙ¼Ù</label><input type="date" class="fi" id="ddate"></div>
+    </div>
+    <button type="submit" class="btn-s" id="lb_dadd">â ÙØ·Ø§ÙØ¨Ù Ø§Ø¶Ø§ÙÙ Ú©ÙÙ</button>
+  </form>
+  <div id="debtorsList" style="margin-top:14px"></div>
+</div>
+
+<!-- CREDITORS TAB -->
+
+<div id="tab_creditors" class="tb">
+  <div class="sec-title" id="lb_st1">Ø²ÙØ§ Ø¯ ÙØ¯ÛÙÙÛØª ÙÛØ³Øª</div>
+  <form onsubmit="addCreditor(event)">
+    <div class="fg"><label class="fl" id="lb_cname">Ø¯ Ù¾ÙØ± ÙØ±Ú©ÙÙÙÚ©Ù ÙÙÙ</label><input class="fi" id="cname" required></div>
+    <div class="g2">
+      <div class="fg"><label class="fl" id="lb_camt">ÙÙØ¯Ø§Ø± $</label><input type="number" class="fi" id="camt" placeholder="0" required></div>
+      <div class="fg"><label class="fl" id="lb_cdate">ÙÛÙ¼Ù</label><input type="date" class="fi" id="cdate"></div>
+    </div>
+    <button type="submit" class="btn-s" id="lb_cadd">â ÙØ¯ÛÙÙÛØª Ø§Ø¶Ø§ÙÙ Ú©ÙÙ</button>
+  </form>
+  <div id="creditorsList" style="margin-top:14px"></div>
+</div>
+
+<!-- COMMODITIES TAB -->
+
+<div id="tab_commodities" class="tb">
+  <div class="sec-title" id="lb_st2">Ø¯ Ø§ÙØ¨Ø§Ø± ØªÙÚ©Ù</div>
+  <form onsubmit="addCommodity(event)">
+    <div class="fg"><label class="fl" id="lb_mname">Ø¯ ØªÙÚ©Ù ÚÙÙ</label>
+      <select class="fi" id="mname">
+        <option id="opt_oil">ð¢ï¸ ØºÙÚÙ (Oil) - 10L</option>
+        <option id="opt_sugar">ð¬ Ø¨ÙØ±Ù (Sugar) - 50KG</option>
+        <option id="opt_other">ð¦ ÙÙØ± (Other)</option>
+      </select>
+    </div>
+    <div class="g2">
+      <div class="fg"><label class="fl" id="lb_mqty">ÙÙØ¯Ø§Ø±</label><input type="number" step="0.01" class="fi" id="mqty" placeholder="0" required></div>
+      <div class="fg"><label class="fl" id="lb_mprice">ÙÛÙØª $</label><input type="number" step="0.01" class="fi" id="mprice" placeholder="0" required></div>
+    </div>
+    <button type="submit" class="btn-s" id="lb_madd">â ØªÙÚ©Û Ø«Ø¨ØªÙÙ</button>
+  </form>
+  <div id="commoditiesList" style="margin-top:14px"></div>
+</div>
+
+<!-- P&L TAB -->
+
+<div id="tab_profitloss" class="tb">
+  <div class="sec-title" id="lb_st3">Ø¯ Ú«Ù¼Û Ø§Ù Ø²ÛØ§Ù Ø­Ø³Ø§Ø¨</div>
+  <div class="ob-card">
+    <div style="font-size:13px;font-weight:700;margin-bottom:3px" id="lb_obTitle">ð Ø¯ Ù¾ÛÙ Ø¨ÛÙÙØ³</div>
+    <div style="font-size:11px;color:#64748b;margin-bottom:11px" id="lb_obSub">ÛÙ ÚÙ ÙÙÛÚ©Ø¦</div>
+    <div class="g2" style="margin-bottom:8px">
+      <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px" id="lb_obType">ÚÙÙ</div>
+        <select class="ob-sel" id="ob_type"><option value="profit" id="opt_profit">ð Ú«Ù¼Ù</option><option value="loss" id="opt_loss">ð Ø²ÛØ§Ù</option></select>
+      </div>
+      <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px" id="lb_obAmt">ÙÙØ¯Ø§Ø± $</div>
+        <input type="number" class="ob-inp" id="ob_amount" placeholder="0">
+      </div>
+    </div>
+    <button class="btn-ob" id="lb_obSave" onclick="saveOB()">ð¾ Ø«Ø¨ØªÙÙ</button>
+    <div class="ob-st" id="ob_status"></div>
+  </div>
+  <div class="pl-hero">
+    <div class="pl-badge" id="lb_auto">â¡ Ø§ØªÙÙØ§ØªÛÚ© ÙØ­Ø§Ø³Ø¨Ù</div>
+    <div class="pl-g2">
+      <div class="pl-box"><div class="pl-bl" id="lb_totalInc">â Ù¼ÙÙ Ø¹Ø§ÛØ¯</div><div class="pl-bv" style="color:#4ade80" id="pl_inc">$0</div></div>
+      <div class="pl-box"><div class="pl-bl" id="lb_totalOut">â Ù¼ÙÙ Ø®Ø±Ú</div><div class="pl-bv" style="color:#f87171" id="pl_out">$0</div></div>
+    </div>
+    <div class="pl-net zero" id="pl_netBox">
+      <div class="pl-nl" id="pl_netLbl">Ø®Ø§ÙØµÙ Ù¾Ø§ÛÙÙ</div>
+      <div class="pl-nv" id="pl_netVal">$0</div>
+    </div>
+  </div>
+  <div class="src-grid">
+    <div class="src-c"><div class="src-ic">ð°</div><div class="src-l" id="lb_src1">Ø²ÙØ§ ÙØ·Ø§ÙØ¨Ø§Øª</div><div class="src-v clg" id="ps_d">$0</div></div>
+    <div class="src-c"><div class="src-ic">ð¦</div><div class="src-l" id="lb_src2">Ø§ÙØ¨Ø§Ø±</div><div class="src-v clt" id="ps_m">$0</div></div>
+    <div class="src-c"><div class="src-ic">â</div><div class="src-l" id="lb_src3">Ø²ÙØ§ Ù¾ÙØ±ÙÙÙ</div><div class="src-v clr" id="ps_c">$0</div></div>
+    <div class="src-c"><div class="src-ic">ð¸</div><div class="src-l" id="lb_src4">ÙÚ«ÚØªÙÙÙ</div><div class="src-v cla" id="ps_e">$0</div></div>
+  </div>
+  <div class="bkd">
+    <div class="bkd-t" id="lb_detail">ØªÙØµÛÙÙ ÙØ­Ø§Ø³Ø¨Ù</div>
+    <div class="bd-r"><span class="bd-l" id="pl_ob_lbl">ð Ù¾ÛÙ Ø¨ÛÙÙØ³</span><span class="bd-v neu" id="pl_ob_val">$0</span></div>
+    <div class="bd-r"><span class="bd-l" id="lb_bdr1">â ÙØ·Ø§ÙØ¨Ø§Øª</span><span class="bd-v pos" id="pl_d_val">+$0</span></div>
+    <div class="bd-r"><span class="bd-l" id="lb_bdr2">â Ø§ÙØ¨Ø§Ø±</span><span class="bd-v pos" id="pl_m_val">+$0</span></div>
+    <div class="bd-r"><span class="bd-l" id="lb_bdr3">â ÙØ¯ÛÙÙÛØªÙÙÙ</span><span class="bd-v neg" id="pl_c_val">-$0</span></div>
+    <div class="bd-r"><span class="bd-l" id="lb_bdr4">â ÙÚ«ÚØªÙÙÙ</span><span class="bd-v neg" id="pl_e_val">-$0</span></div>
+    <div class="bd-r tot"><span id="lb_net" style="font-weight:700">ð¯ Ø®Ø§ÙØµÙ Ù¾Ø§ÛÙÙ</span><span class="bd-v neu" id="pl_net_val">$0</span></div>
+  </div>
+  <div class="bkd"><div class="bkd-t" id="lb_expDetail">Ø¯ ÙÚ«ÚØªÙÙÙ ØªÙØµÛÙ</div><div id="pl_expCats"></div></div>
+</div>
+
+<!-- EXPENSES TAB -->
+
+<div id="tab_expenses" class="tb">
+  <div class="sec-title" id="lb_st4">Ø¹ÙÙÛØ§ØªÙ ÙÚ«ÚØªÙÙÙ</div>
+  <form onsubmit="addExpense(event)">
+    <div class="fg"><label class="fl" id="lb_ename">Ø¹ÙÙØ§Ù</label><input class="fi" id="ename" required></div>
+    <div class="g2">
+      <div class="fg"><label class="fl" id="lb_eamt">ÙÙØ¯Ø§Ø± $</label><input type="number" class="fi" id="eamt" placeholder="0" required></div>
+      <div class="fg"><label class="fl" id="lb_ecat">Ú©Ù¼ÙâÚ«ÙØ±Ù</label>
+        <select class="fi" id="ecat">
+          <option id="ec1">Ú©Ø±Ø§ÛÙ</option><option id="ec2">ÙØ¹Ø§Ø´ÙÙÙ</option><option id="ec3">ØªØ±Ø§ÙØ³Ù¾ÙØ±Øª</option>
+          <option id="ec4">Ø¨Ø±ÚÙØ§</option><option id="ec5">Ø§ÙØ¨Ù</option><option id="ec6">ØªÛÙ/Ø¨ÙØ²ÛÙ</option><option id="ec7">ÙÙØ±</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label class="fl" id="lb_edate">ÙÛÙ¼Ù</label><input type="date" class="fi" id="edate" required></div>
+    <button type="submit" class="btn-s" id="lb_eadd">â ÙÚ«ÚØª Ø«Ø¨ØªÙÙ</button>
+  </form>
+  <div id="expensesList" style="margin-top:14px"></div>
+</div>
+
+<!-- PAYMENTS TAB -->
+
+<div id="tab_payments" class="tb">
+  <div class="pay-s py">
+    <h3 id="lb_payTitle">ð¸ Ù¾ÛØ³Û ÙØ±Ú©ÙÙ</h3>
+    <form onsubmit="makePayment(event)">
+      <label style="font-size:11px;color:rgba(255,255,255,.7);display:block;margin-bottom:3px" id="lb_selCr">Ù¾ÙØ± ÙØ±Ú©ÙÙÙÚ©Û</label>
+      <select class="pi" id="pay_creditor" required><option value="" id="lb_selOpt">-- Ø§ÙØªØ®Ø§Ø¨ Ú©ÚØ¦ --</option></select>
+      <div class="g2" style="gap:8px">
+        <div><label style="font-size:11px;color:rgba(255,255,255,.7);display:block;margin-bottom:3px" id="lb_payAmt">ÙÙØ¯Ø§Ø± $</label><input type="number" class="pi" id="pay_amt" placeholder="0" required></div>
+        <div><label style="font-size:11px;color:rgba(255,255,255,.7);display:block;margin-bottom:3px" id="lb_payDate">ÙÛÙ¼Ù</label><input type="date" class="pi" id="pay_date" required></div>
+      </div>
+      <input type="text" class="pi" id="pay_note" placeholder="ÛØ§Ø¯ÚØª">
+      <button type="submit" class="btn-py" style="color:var(--r)" id="lb_payBtn">â ØªØ§Ø¯ÛÙ Ø«Ø¨ØªÙÙ</button>
+    </form>
+  </div>
+  <div class="pay-s rc">
+    <h3 id="lb_recTitle">ðµ Ù¾ÛØ³Û Ø§Ø®ÛØ³ØªÙ</h3>
+    <form onsubmit="receivePayment(event)">
+      <label style="font-size:11px;color:rgba(255,255,255,.7);display:block;margin-bottom:3px" id="lb_selDb">ÙØ·Ø§ÙØ¨Ù</label>
+      <select class="pi" id="rec_debtor" required><option value="">-- Ø§ÙØªØ®Ø§Ø¨ Ú©ÚØ¦ --</option></select>
+      <div class="g2" style="gap:8px">
+        <div><label style="font-size:11px;color:rgba(255,255,255,.7);display:block;margin-bottom:3px" id="lb_recAmt">ÙÙØ¯Ø§Ø± $</label><input type="number" class="pi" id="rec_amt" placeholder="0" required></div>
+        <div><label style="font-size:11px;color:rgba(255,255,255,.7);display:block;margin-bottom:3px" id="lb_recDate">ÙÛÙ¼Ù</label><input type="date" class="pi" id="rec_date" required></div>
+      </div>
+      <input type="text" class="pi" id="rec_note" placeholder="ÛØ§Ø¯ÚØª">
+      <button type="submit" class="btn-py" style="color:var(--g)" id="lb_recBtn">â Ø±Ø³ÛØ¯ Ø«Ø¨ØªÙÙ</button>
+    </form>
+  </div>
+  <div class="sec-title" id="lb_hist">ØªØ§Ø±ÛØ®ÚÙ</div>
+  <div id="payHistList"></div>
+</div>
+
+<!-- TRANSACTIONS TAB -->
+
+<div id="tab_transactions" class="tb">
+  <div class="sec-title" id="lb_st6">Ø¯ ÙØ¹Ø§ÙÙØ§ØªÙ Ø³ÙØ§Ø¨Ù</div>
+  <div id="transactionsList"></div>
+</div>
+
+<!-- STATEMENTS TAB -->
+
+<div id="tab_statements" class="tb">
+  <div class="sec-title" id="lb_st7">Ø¯ Ø­Ø³Ø§Ø¨ Ø³Ù¼ÛÙ¼ÙÙÙ¼</div>
+  <div style="background:var(--lt);border:1px solid var(--br);border-radius:var(--rad2);padding:13px;margin-bottom:13px">
+    <div class="fg"><label class="fl" id="lb_stPerson">Ø´Ø®Øµ / Ø´Ø±Ú©Øª</label><select class="fi" id="stmt_person" onchange="stmtDates()"><option value="">-- Ø§ÙØªØ®Ø§Ø¨ Ú©ÚØ¦ --</option></select></div>
+    <div class="g2">
+      <div class="fg"><label class="fl" id="lb_stStart">Ø¯ Ù¾ÛÙ ÙÛÙ¼Ù</label><input type="date" class="fi" id="stmt_start"></div>
+      <div class="fg"><label class="fl" id="lb_stEnd">Ø¯ Ø®ØªÙ ÙÛÙ¼Ù</label><input type="date" class="fi" id="stmt_end"></div>
+    </div>
+    <button class="btn-s" id="lb_stGen" onclick="generateStatement()">ð Ø³Ù¼ÛÙ¼ÙÙÙ¼ Ø¬ÙÚÙÙ</button>
+  </div>
+  <div id="stmtResult"></div>
+</div>
+
+<!-- REPORTS TAB -->
+
+<div id="tab_reports" class="tb">
+  <div class="sec-title" id="lb_st8">ÙØ§ÙÙ Ø±Ø§Ù¾ÙØ±</div>
+  <div style="background:white;border:1px solid var(--br);border-radius:var(--rad2);padding:13px;margin-bottom:11px">
+    <div class="rep-r"><span class="rep-l" id="lb_rp1">Ø²ÙØ§ ÙØ·Ø§ÙØ¨Ø§Øª</span><span class="rep-val clg" id="rep_d">$0</span></div>
+    <div class="rep-r"><span class="rep-l" id="lb_rp2">Ø§ÙØ¨Ø§Ø±</span><span class="rep-val clt" id="rep_m">$0</span></div>
+    <div class="rep-r"><span class="rep-l" id="lb_rp3">Ù¼ÙÙÛ Ø´ØªÙÙÛ</span><span class="rep-val" id="rep_a">$0</span></div>
+    <div class="rep-r"><span class="rep-l" id="lb_rp4">Ø²ÙØ§ ÙØ¯ÛÙÙÛØªÙÙÙ</span><span class="rep-val clr" id="rep_c">$0</span></div>
+    <div class="rep-r"><span class="rep-l" id="lb_rp5">ÙÚ«ÚØªÙÙÙ</span><span class="rep-val cla" id="rep_e">$0</span></div>
+    <div class="rep-r" style="border-top:2px solid var(--dk2);padding-top:11px"><span style="font-weight:800;font-size:14px" id="lb_rpNet">ð¯ ÙØ±ÙØ³ØªÛ Ù¾Ø§ÛÙÙ</span><span class="rep-val" id="rep_net" style="font-size:16px">$0</span></div>
+  </div>
+  <div style="background:white;border:1px solid var(--br);border-radius:var(--rad2);padding:13px;margin-bottom:11px">
+    <div style="font-size:13px;font-weight:700;margin-bottom:9px" id="lb_catRep">ð¸ Ø¯ ÙÚ«ÚØªÙÙÙ ØªÙØµÛÙ</div>
+    <div id="rep_cats"></div>
+  </div>
+  <button class="btn-act" style="background:linear-gradient(135deg,var(--g),var(--g2));color:white" id="lb_export" onclick="exportData()">ð¥ ÙØ¹ÙÙÙØ§Øª ØµØ§Ø¯Ø±ÙÙ</button>
+  <button class="btn-act" style="background:linear-gradient(135deg,var(--y),#f59e0b);color:white;margin-top:7px" id="lb_clear" onclick="clearAll()">ðï¸ Ù¼ÙÙ Ù¾Ø§Ú©ÙÙ</button>
+</div>
+
+<script>
+// ==================== TRANSLATIONS ====================
+var T = {
+  ps: {
+    dir:'rtl', prd1:'Ø¯ ØºÙÚÙ ÚØ¨Ù', prd2:'Ø¯ Ø¨ÙØ±Û Ù¾Ø§Ø±Ø³Ù', brandTag:'OIL & SUGAR LTD',
+    lb_rate:'$1=', lb_finalBal:'ÙØ±ÙØ³ØªÛ Ù¾Ø§ÛÙÙ', lb_assets:'Ù¼ÙÙÛ Ø´ØªÙÙÛ', lb_debts:'Ù¼ÙÙ Ù¾ÙØ±ÙÙÙ',
+    lb_stock:'Ø¯ ØªÙÚ©Ù Ø§Ø±Ø²ÚØª', lb_expenses:'Ù¼ÙÙ ÙÚ«ÚØªÙÙÙ',
+    lb_nt0:'Ø²ÙØ§ Ù¾Ø± ÚØ§', lb_nt1:'Ø²ÙØ§ Ø¨Ø§ÙØ¯Û', lb_nt2:'ØªÙÚ©Ù', lb_nt3:'Ú«Ù¼Ù/Ø²ÛØ§Ù',
+    lb_nt4:'ÙÚ«ÚØªÙÙÙ', lb_nt5:'ØªØ§Ø¯ÛØ§Øª', lb_nt6:'ÙØ¹Ø§ÙÙØ§Øª', lb_nt7:'Ø³Ù¼ÛÙ¼ÙÙÙ¼', lb_nt8:'Ø±Ø§Ù¾ÙØ±',
+    lb_st0:'Ø²ÙØ§ Ø¯ ÙØ·Ø§ÙØ¨Ø§ØªÙ ÙÛØ³Øª', lb_st1:'Ø²ÙØ§ Ø¯ ÙØ¯ÛÙÙÛØª ÙÛØ³Øª', lb_st2:'Ø¯ Ø§ÙØ¨Ø§Ø± ØªÙÚ©Ù',
+    lb_st3:'Ø¯ Ú«Ù¼Û Ø§Ù Ø²ÛØ§Ù Ø­Ø³Ø§Ø¨', lb_st4:'Ø¹ÙÙÛØ§ØªÙ ÙÚ«ÚØªÙÙÙ', lb_st6:'Ø¯ ÙØ¹Ø§ÙÙØ§ØªÙ Ø³ÙØ§Ø¨Ù',
+    lb_st7:'Ø¯ Ø­Ø³Ø§Ø¨ Ø³Ù¼ÛÙ¼ÙÙÙ¼', lb_st8:'ÙØ§ÙÙ Ø±Ø§Ù¾ÙØ±',
+    lb_dname:'Ø¯ Ø´Ø®Øµ ÙÙÙ', lb_damt:'ÙÙØ¯Ø§Ø± $', lb_ddate:'ÙÛÙ¼Ù', lb_dadd:'â ÙØ·Ø§ÙØ¨Ù Ø§Ø¶Ø§ÙÙ Ú©ÙÙ',
+    lb_cname:'Ø¯ Ù¾ÙØ± ÙØ±Ú©ÙÙÙÚ©Ù ÙÙÙ', lb_camt:'ÙÙØ¯Ø§Ø± $', lb_cdate:'ÙÛÙ¼Ù', lb_cadd:'â ÙØ¯ÛÙÙÛØª Ø§Ø¶Ø§ÙÙ Ú©ÙÙ',
+    lb_mname:'Ø¯ ØªÙÚ©Ù ÚÙÙ', lb_mqty:'ÙÙØ¯Ø§Ø±', lb_mprice:'ÙÛÙØª $', lb_madd:'â ØªÙÚ©Û Ø«Ø¨ØªÙÙ',
+    opt_oil:'ð¢ï¸ ØºÙÚÙ (Oil) - 10L', opt_sugar:'ð¬ Ø¨ÙØ±Ù (Sugar) - 50KG', opt_other:'ð¦ ÙÙØ± (Other)',
+    lb_obTitle:'ð Ø¯ Ù¾ÛÙ Ø¨ÛÙÙØ³', lb_obSub:'ÛÙ ÚÙ ÙÙÛÚ©Ø¦', lb_obType:'ÚÙÙ', lb_obAmt:'ÙÙØ¯Ø§Ø± $', lb_obSave:'ð¾ Ø«Ø¨ØªÙÙ',
+    opt_profit:'ð Ú«Ù¼Ù', opt_loss:'ð Ø²ÛØ§Ù',
+    lb_auto:'â¡ Ø§ØªÙÙØ§ØªÛÚ© ÙØ­Ø§Ø³Ø¨Ù', lb_totalInc:'â Ù¼ÙÙ Ø¹Ø§ÛØ¯', lb_totalOut:'â Ù¼ÙÙ Ø®Ø±Ú',
+    lb_src1:'Ø²ÙØ§ ÙØ·Ø§ÙØ¨Ø§Øª', lb_src2:'Ø§ÙØ¨Ø§Ø±', lb_src3:'Ø²ÙØ§ Ù¾ÙØ±ÙÙÙ', lb_src4:'ÙÚ«ÚØªÙÙÙ',
+    lb_detail:'ØªÙØµÛÙÙ ÙØ­Ø§Ø³Ø¨Ù', lb_bdr1:'â ÙØ·Ø§ÙØ¨Ø§Øª', lb_bdr2:'â Ø§ÙØ¨Ø§Ø±', lb_bdr3:'â ÙØ¯ÛÙÙÛØªÙÙÙ',
+    lb_bdr4:'â ÙÚ«ÚØªÙÙÙ', lb_net:'ð¯ Ø®Ø§ÙØµÙ Ù¾Ø§ÛÙÙ', lb_expDetail:'Ø¯ ÙÚ«ÚØªÙÙÙ ØªÙØµÛÙ',
+    lb_ename:'Ø¹ÙÙØ§Ù', lb_eamt:'ÙÙØ¯Ø§Ø± $', lb_ecat:'Ú©Ù¼ÙâÚ«ÙØ±Ù', lb_edate:'ÙÛÙ¼Ù', lb_eadd:'â ÙÚ«ÚØª Ø«Ø¨ØªÙÙ',
+    ec1:'Ú©Ø±Ø§ÛÙ', ec2:'ÙØ¹Ø§Ø´ÙÙÙ', ec3:'ØªØ±Ø§ÙØ³Ù¾ÙØ±Øª', ec4:'Ø¨Ø±ÚÙØ§', ec5:'Ø§ÙØ¨Ù', ec6:'ØªÛÙ/Ø¨ÙØ²ÛÙ', ec7:'ÙÙØ±',
+    lb_payTitle:'ð¸ Ù¾ÛØ³Û ÙØ±Ú©ÙÙ', lb_selCr:'Ù¾ÙØ± ÙØ±Ú©ÙÙÙÚ©Û', lb_selOpt:'-- Ø§ÙØªØ®Ø§Ø¨ Ú©ÚØ¦ --',
+    lb_payAmt:'ÙÙØ¯Ø§Ø± $', lb_payDate:'ÙÛÙ¼Ù', lb_payBtn:'â ØªØ§Ø¯ÛÙ Ø«Ø¨ØªÙÙ',
+    lb_recTitle:'ðµ Ù¾ÛØ³Û Ø§Ø®ÛØ³ØªÙ', lb_selDb:'ÙØ·Ø§ÙØ¨Ù', lb_recAmt:'ÙÙØ¯Ø§Ø± $', lb_recDate:'ÙÛÙ¼Ù', lb_recBtn:'â Ø±Ø³ÛØ¯ Ø«Ø¨ØªÙÙ',
+    lb_hist:'ØªØ§Ø±ÛØ®ÚÙ',
+    lb_stPerson:'Ø´Ø®Øµ / Ø´Ø±Ú©Øª', lb_stStart:'Ø¯ Ù¾ÛÙ ÙÛÙ¼Ù', lb_stEnd:'Ø¯ Ø®ØªÙ ÙÛÙ¼Ù', lb_stGen:'ð Ø³Ù¼ÛÙ¼ÙÙÙ¼ Ø¬ÙÚÙÙ',
+    lb_rp1:'Ø²ÙØ§ ÙØ·Ø§ÙØ¨Ø§Øª', lb_rp2:'Ø§ÙØ¨Ø§Ø±', lb_rp3:'Ù¼ÙÙÛ Ø´ØªÙÙÛ', lb_rp4:'Ø²ÙØ§ ÙØ¯ÛÙÙÛØªÙÙÙ',
+    lb_rp5:'ÙÚ«ÚØªÙÙÙ', lb_rpNet:'ð¯ ÙØ±ÙØ³ØªÛ Ù¾Ø§ÛÙÙ', lb_catRep:'ð¸ Ø¯ ÙÚ«ÚØªÙÙÙ ØªÙØµÛÙ',
+    lb_export:'ð¥ ÙØ¹ÙÙÙØ§Øª ØµØ§Ø¯Ø±ÙÙ', lb_clear:'ðï¸ Ù¼ÙÙ Ù¾Ø§Ú©ÙÙ',
+    del:'ð Ø­Ø°Ù', empty:'ÙÛÚ Ø±ÛÚ©Ø§Ø±Ú ÙØ´ØªÙ', confirmDel:'Ø­Ø°Ù Ú©ÙÙØ', confirmClear:'Ù¼ÙÙ ÙØ¹ÙÙÙØ§Øª Ù¾Ø§Ú©ÛÚÙØ', confirmClear2:'ð¨ Ø¨ÛØ±ØªÙ ÙØ´Ù Ø±Ø§Ú«Ø±ÚÛØ¯ÙÛ!',
+    pl_net_profit:'ð Ø®Ø§ÙØµÙ Ú«Ù¼Ù', pl_net_loss:'ð Ø®Ø§ÙØµÙ Ø²ÛØ§Ù', pl_net_even:'â¡ï¸ Ø³Ø±Ø¨Ø±Ù',
+    ob_profit_saved:'â Ú«Ù¼Ù: ', ob_loss_saved:'â Ø²ÛØ§Ù: ',
+    stmt_title:'Ø¯ Ø­Ø³Ø§Ø¨ Ø³Ù¼ÛÙ¼ÙÙÙ¼', stmt_type_d:'ð¢ ÙØ·Ø§ÙØ¨Ù', stmt_type_c:'ð´ ÙØ¯ÛÙÙÛØª',
+    stmt_open:'Ø¯ Ù¾ÛÙ Ø¨ÛÙÙØ³', stmt_close:'Ø¯ Ø®ØªÙ Ø¨ÛÙÙØ³', stmt_change:'Ø®Ø§ÙØµ ØªØºÛØ±',
+    stmt_col1:'ÙÛÙ¼Ù', stmt_col2:'ØªÙØµÛÙ', stmt_col3:'Ø®Ø±Ú', stmt_col4:'Ø¹Ø§ÛØ¯', stmt_col5:'Ø¨ÛÙÙØ³',
+    stmt_debit:'Ø·ÙØ¨', stmt_credit:'ÙØ±Ø¶', stmt_footer:'HAJI KOCHAI Financial System',
+    btn_print:'ð¨ï¸ PDF / ÚØ§Ù¾', btn_share:'ð¤ Ø´Ø±ÛÚ©ÙÙ',
+    no_records:'ÙÛÚ ÙØ¹Ø§ÙÙÙ ÙØ´ØªÙ', select_first:'ÙÙÙÚÛ Ø³Ù¼ÛÙ¼ÙÙÙ¼ Ø¬ÙÚ Ú©ÚØ¦', fill_all:'Ù¼ÙÙ Ø³Ø§Ø­Û ÚÚ© Ú©ÚØ¦',
+    exported:'â ÙØ¹ÙÙÙØ§Øª ØµØ§Ø¯Ø± Ø´ÙÙ!', cleared:'â Ù¼ÙÙ Ù¾Ø§Ú© Ø´ÙÙ!', sign1:'Ø¯ Ø­Ø³Ø§Ø¨ Ø¬ÙÚÙÙÙÚ©Ù ÙØ§Ø³ÙÛÚ©', sign2:'Ø¯ ØªØ±ÙØ§Ø³Ù Ú©ÙÙÙÚ©Ù ÙØ§Ø³ÙÛÚ©'
+  },
+  fa: {
+    dir:'rtl', prd1:'Ú©ÙØ³Ø±Ù Ø±ÙØºÙ', prd2:'Ø¨Ø³ØªÙ Ø´Ú©Ø±', brandTag:'Ø±ÙØºÙ Ù Ø´Ú©Ø±',
+    lb_rate:'$1=', lb_finalBal:'ÙØªÛØ¬Ù ÙÙØ§ÛÛ', lb_assets:'Ø¯Ø§Ø±Ø§ÛÛâÙØ§', lb_debts:'Ø¨Ø¯ÙÛâÙØ§',
+    lb_stock:'Ø§Ø±Ø²Ø´ Ú©Ø§ÙØ§', lb_expenses:'ÙØ¬ÙÙØ¹ ÙØµØ§Ø±Ù',
+    lb_nt0:'Ø·ÙØ¨Ú©Ø§Ø±ÛâÙØ§', lb_nt1:'Ø¨Ø¯ÙÚ©Ø§Ø±ÛâÙØ§', lb_nt2:'Ú©Ø§ÙØ§ÙØ§', lb_nt3:'Ø³ÙØ¯/Ø²ÛØ§Ù',
+    lb_nt4:'ÙØµØ§Ø±Ù', lb_nt5:'Ù¾Ø±Ø¯Ø§Ø®Øª', lb_nt6:'ÙØ¹Ø§ÙÙØ§Øª', lb_nt7:'ØµÙØ±ØªØ­Ø³Ø§Ø¨', lb_nt8:'Ú¯Ø²Ø§Ø±Ø´',
+    lb_st0:'ÙÛØ³Øª Ø·ÙØ¨Ú©Ø§Ø±ÛâÙØ§', lb_st1:'ÙÛØ³Øª Ø¨Ø¯ÙÚ©Ø§Ø±ÛâÙØ§', lb_st2:'Ú©Ø§ÙØ§ÙØ§Û Ø§ÙØ¨Ø§Ø±',
+    lb_st3:'ÙØ­Ø§Ø³Ø¨Ù Ø³ÙØ¯ Ù Ø²ÛØ§Ù', lb_st4:'ÙØµØ§Ø±Ù Ø¹ÙÙÛØ§ØªÛ', lb_st6:'Ø³ÙØ§Ø¨Ù ÙØ¹Ø§ÙÙØ§Øª',
+    lb_st7:'ØµÙØ±ØªØ­Ø³Ø§Ø¨', lb_st8:'Ú¯Ø²Ø§Ø±Ø´ ÙØ§ÙÛ',
+    lb_dname:'ÙØ§Ù Ø´Ø®Øµ', lb_damt:'ÙØ¨ÙØº $', lb_ddate:'ØªØ§Ø±ÛØ®', lb_dadd:'â Ø§ÙØ²ÙØ¯Ù Ø·ÙØ¨Ú©Ø§Ø±Û',
+    lb_cname:'ÙØ§Ù Ø·ÙØ¨Ú©Ø§Ø±', lb_camt:'ÙØ¨ÙØº $', lb_cdate:'ØªØ§Ø±ÛØ®', lb_cadd:'â Ø§ÙØ²ÙØ¯Ù Ø¨Ø¯ÙÚ©Ø§Ø±Û',
+    lb_mname:'ÙÙØ¹ Ú©Ø§ÙØ§', lb_mqty:'ÙÙØ¯Ø§Ø±', lb_mprice:'ÙÛÙØª $', lb_madd:'â Ø«Ø¨Øª Ú©Ø§ÙØ§',
+    opt_oil:'ð¢ï¸ Ø±ÙØºÙ - 10L', opt_sugar:'ð¬ Ø´Ú©Ø± - 50KG', opt_other:'ð¦ Ø³Ø§ÛØ±',
+    lb_obTitle:'ð Ø¨ÛÙØ§ÙØ³ Ø§ÙÙÛÙ', lb_obSub:'ÛÚ© Ø¨Ø§Ø± ÙØ§Ø±Ø¯ Ú©ÙÛØ¯', lb_obType:'ÙÙØ¹', lb_obAmt:'ÙØ¨ÙØº $', lb_obSave:'ð¾ Ø°Ø®ÛØ±Ù',
+    opt_profit:'ð Ø³ÙØ¯', opt_loss:'ð Ø²ÛØ§Ù',
+    lb_auto:'â¡ ÙØ­Ø§Ø³Ø¨Ù Ø®ÙØ¯Ú©Ø§Ø±', lb_totalInc:'â ÙØ¬ÙÙØ¹ Ø¯Ø±Ø¢ÙØ¯', lb_totalOut:'â ÙØ¬ÙÙØ¹ ÙØµØ±Ù',
+    lb_src1:'Ø·ÙØ¨Ú©Ø§Ø±ÛâÙØ§', lb_src2:'Ø§ÙØ¨Ø§Ø±', lb_src3:'Ø¨Ø¯ÙÚ©Ø§Ø±ÛâÙØ§', lb_src4:'ÙØµØ§Ø±Ù',
+    lb_detail:'ÙØ­Ø§Ø³Ø¨Ù ØªÙØµÛÙÛ', lb_bdr1:'â Ø·ÙØ¨Ú©Ø§Ø±ÛâÙØ§', lb_bdr2:'â Ø§ÙØ¨Ø§Ø±', lb_bdr3:'â Ø¨Ø¯ÙÚ©Ø§Ø±ÛâÙØ§',
+    lb_bdr4:'â ÙØµØ§Ø±Ù', lb_net:'ð¯ ÙØªÛØ¬Ù ÙÙØ§ÛÛ', lb_expDetail:'ØªÙØµÛÙ ÙØµØ§Ø±Ù',
+    lb_ename:'Ø¹ÙÙØ§Ù', lb_eamt:'ÙØ¨ÙØº $', lb_ecat:'Ø¯Ø³ØªÙâØ¨ÙØ¯Û', lb_edate:'ØªØ§Ø±ÛØ®', lb_eadd:'â Ø«Ø¨Øª ÙØµØ±Ù',
+    ec1:'Ú©Ø±Ø§ÛÙ', ec2:'ÙØ¹Ø§Ø´Ø§Øª', ec3:'ØªØ±Ø§ÙØ³Ù¾ÙØ±Øª', ec4:'Ø¨Ø±Ù', ec5:'Ø¢Ø¨', ec6:'Ø³ÙØ®Øª', ec7:'Ø³Ø§ÛØ±',
+    lb_payTitle:'ð¸ Ù¾Ø±Ø¯Ø§Ø®Øª Ù¾ÙÙ', lb_selCr:'Ø·ÙØ¨Ú©Ø§Ø± Ø±Ø§ Ø§ÙØªØ®Ø§Ø¨ Ú©ÙÛØ¯', lb_selOpt:'-- Ø§ÙØªØ®Ø§Ø¨ Ú©ÙÛØ¯ --',
+    lb_payAmt:'ÙØ¨ÙØº $', lb_payDate:'ØªØ§Ø±ÛØ®', lb_payBtn:'â Ø«Ø¨Øª Ù¾Ø±Ø¯Ø§Ø®Øª',
+    lb_recTitle:'ðµ Ø¯Ø±ÛØ§ÙØª Ù¾ÙÙ', lb_selDb:'Ø·ÙØ¨Ú©Ø§Ø±Û Ø±Ø§ Ø§ÙØªØ®Ø§Ø¨ Ú©ÙÛØ¯', lb_recAmt:'ÙØ¨ÙØº $', lb_recDate:'ØªØ§Ø±ÛØ®', lb_recBtn:'â Ø«Ø¨Øª Ø±Ø³ÛØ¯',
+    lb_hist:'ØªØ§Ø±ÛØ®ÚÙ',
+    lb_stPerson:'Ø´Ø®Øµ / Ø´Ø±Ú©Øª', lb_stStart:'ØªØ§Ø±ÛØ® Ø´Ø±ÙØ¹', lb_stEnd:'ØªØ§Ø±ÛØ® Ù¾Ø§ÛØ§Ù', lb_stGen:'ð ØªÙÙÛØ¯ ØµÙØ±ØªØ­Ø³Ø§Ø¨',
+    lb_rp1:'Ø·ÙØ¨Ú©Ø§Ø±ÛâÙØ§', lb_rp2:'Ø§ÙØ¨Ø§Ø±', lb_rp3:'ÙØ¬ÙÙØ¹ Ø¯Ø§Ø±Ø§ÛÛ', lb_rp4:'Ø¨Ø¯ÙÚ©Ø§Ø±ÛâÙØ§',
+    lb_rp5:'ÙØµØ§Ø±Ù', lb_rpNet:'ð¯ ÙØªÛØ¬Ù ÙÙØ§ÛÛ', lb_catRep:'ð¸ ØªÙØµÛÙ ÙØµØ§Ø±Ù',
+    lb_export:'ð¥ ØµØ§Ø¯Ø± Ú©Ø±Ø¯Ù Ø¯Ø§Ø¯ÙâÙØ§', lb_clear:'ðï¸ Ù¾Ø§Ú© Ú©Ø±Ø¯Ù ÙÙÙ',
+    del:'ð Ø­Ø°Ù', empty:'ÙÛÚ Ø±Ú©ÙØ±Ø¯Û ÙÙØ¬ÙØ¯ ÙÛØ³Øª', confirmDel:'Ø­Ø°Ù Ø´ÙØ¯Ø', confirmClear:'ÙÙÙ Ø¯Ø§Ø¯ÙâÙØ§ Ù¾Ø§Ú© ÙÛâØ´ÙØ¯Ø', confirmClear2:'ð¨ ÙØ§Ø¨Ù Ø¨Ø§Ø²Ú¯Ø´Øª ÙÛØ³Øª!',
+    pl_net_profit:'ð Ø³ÙØ¯ Ø®Ø§ÙØµ', pl_net_loss:'ð Ø²ÛØ§Ù Ø®Ø§ÙØµ', pl_net_even:'â¡ï¸ Ø³Ø± Ø¨Ù Ø³Ø±',
+    ob_profit_saved:'â Ø³ÙØ¯: ', ob_loss_saved:'â Ø²ÛØ§Ù: ',
+    stmt_title:'ØµÙØ±ØªØ­Ø³Ø§Ø¨', stmt_type_d:'ð¢ Ø·ÙØ¨Ú©Ø§Ø±Û', stmt_type_c:'ð´ Ø¨Ø¯ÙÚ©Ø§Ø±Û',
+    stmt_open:'Ø¨ÛÙØ§ÙØ³ Ø§ÙÙ', stmt_close:'Ø¨ÛÙØ§ÙØ³ Ø¢Ø®Ø±', stmt_change:'ØªØºÛØ± Ø®Ø§ÙØµ',
+    stmt_col1:'ØªØ§Ø±ÛØ®', stmt_col2:'ØªÙØ¶ÛØ­', stmt_col3:'Ø¨Ø¯ÙÛ', stmt_col4:'Ø·ÙØ¨', stmt_col5:'Ø¨ÛÙØ§ÙØ³',
+    stmt_debit:'Ø·ÙØ¨', stmt_credit:'ÙØ±Ø¶', stmt_footer:'HAJI KOCHAI Financial System',
+    btn_print:'ð¨ï¸ PDF / ÚØ§Ù¾', btn_share:'ð¤ Ø§Ø´ØªØ±Ø§Ú©âÚ¯Ø°Ø§Ø±Û',
+    no_records:'ÙÛÚ ÙØ¹Ø§ÙÙÙâØ§Û Ø«Ø¨Øª ÙØ´Ø¯Ù', select_first:'Ø§Ø¨ØªØ¯Ø§ ØµÙØ±ØªØ­Ø³Ø§Ø¨ Ø±Ø§ ØªÙÙÛØ¯ Ú©ÙÛØ¯', fill_all:'ÙÙÙ ÙÙØ§Ø±Ø¯ Ø±Ø§ Ù¾Ø± Ú©ÙÛØ¯',
+    exported:'â Ø¯Ø§Ø¯ÙâÙØ§ ØµØ§Ø¯Ø± Ø´Ø¯ÙØ¯!', cleared:'â ÙÙÙ Ù¾Ø§Ú© Ø´Ø¯!', sign1:'Ø§ÙØ¶Ø§Û ØªÙÛÙâÚ©ÙÙØ¯Ù', sign2:'Ø§ÙØ¶Ø§Û ØªØ­ÙÛÙâÚ¯ÛØ±ÙØ¯Ù'
+  },
+  en: {
+    dir:'ltr', prd1:'Oil Can', prd2:'Sugar Parcel', brandTag:'OIL & SUGAR LTD',
+    lb_rate:'$1=', lb_finalBal:'Net Balance', lb_assets:'Total Assets', lb_debts:'Total Debts',
+    lb_stock:'Stock Value', lb_expenses:'Total Expenses',
+    lb_nt0:'Debtors', lb_nt1:'Creditors', lb_nt2:'Stock', lb_nt3:'P&L',
+    lb_nt4:'Expenses', lb_nt5:'Payments', lb_nt6:'Transactions', lb_nt7:'Statement', lb_nt8:'Reports',
+    lb_st0:'Debtors List', lb_st1:'Creditors List', lb_st2:'Warehouse Stock',
+    lb_st3:'Profit & Loss', lb_st4:'Operating Expenses', lb_st6:'Transaction Records',
+    lb_st7:'Account Statement', lb_st8:'Financial Report',
+    lb_dname:'Person Name', lb_damt:'Amount $', lb_ddate:'Date', lb_dadd:'â Add Debtor',
+    lb_cname:'Creditor Name', lb_camt:'Amount $', lb_cdate:'Date', lb_cadd:'â Add Creditor',
+    lb_mname:'Item Type', lb_mqty:'Quantity', lb_mprice:'Price $', lb_madd:'â Add Item',
+    opt_oil:'ð¢ï¸ Oil - 10L', opt_sugar:'ð¬ Sugar - 50KG', opt_other:'ð¦ Other',
+    lb_obTitle:'ð Opening Balance', lb_obSub:'Enter once â always included', lb_obType:'Type', lb_obAmt:'Amount $', lb_obSave:'ð¾ Save',
+    opt_profit:'ð Profit', opt_loss:'ð Loss',
+    lb_auto:'â¡ Auto Calculation', lb_totalInc:'â Total Income', lb_totalOut:'â Total Expenses',
+    lb_src1:'Receivables', lb_src2:'Stock', lb_src3:'Payables', lb_src4:'Expenses',
+    lb_detail:'Detailed Breakdown', lb_bdr1:'â Receivables', lb_bdr2:'â Stock', lb_bdr3:'â Payables',
+    lb_bdr4:'â Expenses', lb_net:'ð¯ Net Result', lb_expDetail:'Expense Breakdown',
+    lb_ename:'Title', lb_eamt:'Amount $', lb_ecat:'Category', lb_edate:'Date', lb_eadd:'â Add Expense',
+    ec1:'Rent', ec2:'Salaries', ec3:'Transport', ec4:'Electricity', ec5:'Water', ec6:'Fuel', ec7:'Other',
+    lb_payTitle:'ð¸ Make Payment', lb_selCr:'Select Creditor', lb_selOpt:'-- Select --',
+    lb_payAmt:'Amount $', lb_payDate:'Date', lb_payBtn:'â Record Payment',
+    lb_recTitle:'ðµ Receive Payment', lb_selDb:'Select Debtor', lb_recAmt:'Amount $', lb_recDate:'Date', lb_recBtn:'â Record Receipt',
+    lb_hist:'History',
+    lb_stPerson:'Person / Company', lb_stStart:'Start Date', lb_stEnd:'End Date', lb_stGen:'ð Generate Statement',
+    lb_rp1:'Receivables', lb_rp2:'Stock', lb_rp3:'Total Assets', lb_rp4:'Payables',
+    lb_rp5:'Expenses', lb_rpNet:'ð¯ Net Result', lb_catRep:'ð¸ Expense Breakdown',
+    lb_export:'ð¥ Export Data', lb_clear:'ðï¸ Clear All',
+    del:'ð Delete', empty:'No records found', confirmDel:'Delete this record?', confirmClear:'Delete all data?', confirmClear2:'ð¨ This cannot be undone!',
+    pl_net_profit:'ð Net Profit', pl_net_loss:'ð Net Loss', pl_net_even:'â¡ï¸ Break Even',
+    ob_profit_saved:'â Profit: ', ob_loss_saved:'â Loss: ',
+    stmt_title:'Account Statement', stmt_type_d:'ð¢ Receivable', stmt_type_c:'ð´ Payable',
+    stmt_open:'Opening Balance', stmt_close:'Closing Balance', stmt_change:'Net Change',
+    stmt_col1:'Date', stmt_col2:'Description', stmt_col3:'Debit', stmt_col4:'Credit', stmt_col5:'Balance',
+    stmt_debit:'Dr', stmt_credit:'Cr', stmt_footer:'HAJI KOCHAI Financial System',
+    btn_print:'ð¨ï¸ PDF / Print', btn_share:'ð¤ Share',
+    no_records:'No transactions found', select_first:'Please generate statement first', fill_all:'Please fill all fields',
+    exported:'â Data exported!', cleared:'â All data cleared!', sign1:'Prepared By', sign2:'Received By'
+  }
+};
+
+var lang = localStorage.getItem('hk_lang') || 'ps';
+var rate = parseFloat(localStorage.getItem('hk_rate')) || 72;
+var data = {
+  debtors:      JSON.parse(localStorage.getItem('hk_d')) || [],
+  creditors:    JSON.parse(localStorage.getItem('hk_c')) || [],
+  commodities:  JSON.parse(localStorage.getItem('hk_m')) || [],
+  expenses:     JSON.parse(localStorage.getItem('hk_e')) || [],
+  transactions: JSON.parse(localStorage.getItem('hk_t')) || [],
+  payments:     JSON.parse(localStorage.getItem('hk_p')) || [],
+  ob:           JSON.parse(localStorage.getItem('hk_ob')) || null
+};
+
+var TODAY = new Date().toISOString().split('T')[0];
+['ddate','cdate','edate','pay_date','rec_date'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=TODAY;});
+document.getElementById('exchangeRate').value = rate;
+
+function t(key){ return T[lang][key] || T['ps'][key] || key; }
+function fmt(n){ return '$' + parseFloat(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtA(n){ return 'Ø' + Math.round(n).toLocaleString(); }
+
+// ===== LANGUAGE =====
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('hk_lang', l);
+  document.body.className = l;
+  document.documentElement.dir = T[l].dir;
+  document.querySelectorAll('.lang-btn').forEach(function(b,i){
+    b.classList.toggle('on', ['en','ps','fa'][i] === l);
+  });
+  applyLabels();
+  renderAll();
+}
+
+function applyLabels() {
+  var keys = Object.keys(T[lang]);
+  keys.forEach(function(k) {
+    var el = document.getElementById(k);
+    if(el) el.textContent = T[lang][k];
+  });
+  // fix input placeholders
+  var pi = document.getElementById('pay_note');
+  var ri = document.getElementById('rec_note');
+  if(pi) pi.placeholder = lang==='en'?'Note (optional)':lang==='fa'?'ÛØ§Ø¯Ø¯Ø§Ø´Øª':'ÛØ§Ø¯ÚØª';
+  if(ri) ri.placeholder = lang==='en'?'Note (optional)':lang==='fa'?'ÛØ§Ø¯Ø¯Ø§Ø´Øª':'ÛØ§Ø¯ÚØª';
+}
+
+function rateChanged(){ rate=parseFloat(document.getElementById('exchangeRate').value)||72; localStorage.setItem('hk_rate',rate); renderAll(); }
+
+function save(){
+  localStorage.setItem('hk_d',JSON.stringify(data.debtors));
+  localStorage.setItem('hk_c',JSON.stringify(data.creditors));
+  localStorage.setItem('hk_m',JSON.stringify(data.commodities));
+  localStorage.setItem('hk_e',JSON.stringify(data.expenses));
+  localStorage.setItem('hk_t',JSON.stringify(data.transactions));
+  localStorage.setItem('hk_p',JSON.stringify(data.payments));
+  updateDash();
+}
+
+function renderAll(){
+  renderDebtors(); renderCreditors(); renderCommodities(); renderExpenses(); renderTransactions(); renderPayHist();
+  updateDash();
+  if(document.getElementById('tab_profitloss').classList.contains('on')) renderPL();
+  if(document.getElementById('tab_reports').classList.contains('on')) updateRep();
+}
+
+function updateDash(){
+  var tD=data.debtors.reduce(function(s,r){return s+r.usd;},0);
+  var tM=data.commodities.reduce(function(s,r){return s+r.usd;},0);
+  var tC=data.creditors.reduce(function(s,r){return s+r.usd;},0);
+  var tE=data.expenses.reduce(function(s,r){return s+r.usd;},0);
+  var ob=data.ob, obV=ob?(ob.type==='profit'?1:-1)*ob.usd:0;
+  var net=tD+tM-tC-tE+obV;
+  document.getElementById('s_a').textContent=fmt(tD+tM);
+  document.getElementById('s_d').textContent=fmt(tC);
+  document.getElementById('s_m').textContent=fmt(tM);
+  document.getElementById('s_e').textContent=fmt(tE);
+  var ha=document.getElementById('heroAmt');
+  ha.textContent=fmt(net);
+  ha.className='bal-amt '+(net>0?'pos':net<0?'neg':'zero');
+  document.getElementById('heroSub').textContent=fmtA(net*rate);
+}
+
+// ===== DEBTORS =====
+function addDebtor(e){
+  e.preventDefault();
+  var n=document.getElementById('dname').value.trim(), a=parseFloat(document.getElementById('damt').value), d=document.getElementById('ddate').value;
+  if(!n||isNaN(a))return;
+  data.debtors.push({id:Date.now(),name:n,usd:a,date:d});
+  data.transactions.push({id:Date.now(),type:t('lb_nt0'),name:n,usd:a,date:d});
+  save(); e.target.reset(); document.getElementById('ddate').value=TODAY; renderDebtors();
+}
+function renderDebtors(){
+  var c=document.getElementById('debtorsList');
+  if(!data.debtors.length){c.innerHTML='<div class="empty-box"><div class="ei">ð</div><p>'+t('empty')+'</p></div>';return;}
+  c.innerHTML=data.debtors.map(function(r){
+    return '<div class="ic"><div class="ic-bar" style="background:var(--g)"></div>'+
+      '<div class="ic-top"><span class="ic-name">ð¤ '+r.name+'</span><span class="ic-amt clg">'+fmt(r.usd)+'</span></div>'+
+      '<div class="ic-meta">'+fmtA(r.usd*rate)+' | ð '+(r.date||'-')+'</div>'+
+      '<div class="ic-acts"><button class="btn-del" onclick="del(\'debtors\','+r.id+',renderDebtors)">'+t('del')+'</button></div></div>';
+  }).join('');
+}
+
+// ===== CREDITORS =====
+function addCreditor(e){
+  e.preventDefault();
+  var n=document.getElementById('cname').value.trim(), a=parseFloat(document.getElementById('camt').value), d=document.getElementById('cdate').value;
+  if(!n||isNaN(a))return;
+  data.creditors.push({id:Date.now(),name:n,usd:a,date:d});
+  data.transactions.push({id:Date.now(),type:t('lb_nt1'),name:n,usd:a,date:d});
+  save(); e.target.reset(); document.getElementById('cdate').value=TODAY; renderCreditors();
+}
+function renderCreditors(){
+  var c=document.getElementById('creditorsList');
+  if(!data.creditors.length){c.innerHTML='<div class="empty-box"><div class="ei">ð</div><p>'+t('empty')+'</p></div>';return;}
+  c.innerHTML=data.creditors.map(function(r){
+    return '<div class="ic"><div class="ic-bar" style="background:var(--r)"></div>'+
+      '<div class="ic-top"><span class="ic-name">ð¤ '+r.name+'</span><span class="ic-amt clr">'+fmt(r.usd)+'</span></div>'+
+      '<div class="ic-meta">'+fmtA(r.usd*rate)+' | ð '+(r.date||'-')+'</div>'+
+      '<div class="ic-acts"><button class="btn-del" onclick="del(\'creditors\','+r.id+',renderCreditors)">'+t('del')+'</button></div></div>';
+  }).join('');
+}
+
+// ===== COMMODITIES =====
+function addCommodity(e){
+  e.preventDefault();
+  var n=document.getElementById('mname').value, q=parseFloat(document.getElementById('mqty').value), p=parseFloat(document.getElementById('mprice').value);
+  if(isNaN(q)||isNaN(p))return;
+  data.commodities.push({id:Date.now(),name:n,qty:q,price:p,usd:q*p});
+  save(); e.target.reset(); renderCommodities();
+}
+function renderCommodities(){
+  var c=document.getElementById('commoditiesList');
+  if(!data.commodities.length){c.innerHTML='<div class="empty-box"><div class="ei">ð¦</div><p>'+t('empty')+'</p></div>';return;}
+  c.innerHTML=data.commodities.map(function(r){
+    return '<div class="ic"><div class="ic-bar" style="background:#0d9488"></div>'+
+      '<div class="ic-top"><span class="ic-name">'+r.name+'</span><span class="ic-amt clt">'+fmt(r.usd)+'</span></div>'+
+      '<div class="ic-meta">'+t('lb_mqty')+': '+r.qty+' | '+t('lb_mprice')+': $'+r.price+' | '+fmtA(r.usd*rate)+'</div>'+
+      '<div class="ic-acts"><button class="btn-del" onclick="del(\'commodities\','+r.id+',renderCommodities)">'+t('del')+'</button></div></div>';
+  }).join('');
+}
+
+// ===== EXPENSES =====
+function addExpense(e){
+  e.preventDefault();
+  var n=document.getElementById('ename').value.trim(), a=parseFloat(document.getElementById('eamt').value), cat=document.getElementById('ecat').value, d=document.getElementById('edate').value;
+  if(!n||isNaN(a))return;
+  data.expenses.push({id:Date.now(),name:n,usd:a,category:cat,date:d});
+  data.transactions.push({id:Date.now(),type:t('lb_nt4'),name:n,usd:a,date:d,category:cat});
+  save(); e.target.reset(); document.getElementById('edate').value=TODAY; renderExpenses();
+}
+function renderExpenses(){
+  var c=document.getElementById('expensesList');
+  if(!data.expenses.length){c.innerHTML='<div class="empty-box"><div class="ei">ð¸</div><p>'+t('empty')+'</p></div>';return;}
+  c.innerHTML=[...data.expenses].reverse().map(function(r){
+    return '<div class="ic"><div class="ic-bar" style="background:var(--y)"></div>'+
+      '<div class="ic-top"><span class="ic-name">ð¸ '+r.name+'</span><span class="ic-amt clr">'+fmt(r.usd)+'</span></div>'+
+      '<div class="ic-meta"><span class="cat-badge">'+r.category+'</span> | ð '+r.date+' | '+fmtA(r.usd*rate)+'</div>'+
+      '<div class="ic-acts"><button class="btn-del" onclick="del(\'expenses\','+r.id+',renderExpenses)">'+t('del')+'</button></div></div>';
+  }).join('');
+}
+
+// ===== P&L =====
+function saveOB(){
+  var type=document.getElementById('ob_type').value, a=parseFloat(document.getElementById('ob_amount').value);
+  if(isNaN(a)||a<0){return;}
+  data.ob={type:type,usd:a};
+  localStorage.setItem('hk_ob',JSON.stringify(data.ob));
+  var st=document.getElementById('ob_status');
+  st.textContent=(type==='profit'?t('ob_profit_saved'):t('ob_loss_saved'))+fmt(a);
+  st.style.color=type==='profit'?'#4ade80':'#f87171';
+  updateDash(); renderPL();
+}
+function renderPL(){
+  var tD=data.debtors.reduce(function(s,r){return s+r.usd;},0);
+  var tM=data.commodities.reduce(function(s,r){return s+r.usd;},0);
+  var tC=data.creditors.reduce(function(s,r){return s+r.usd;},0);
+  var tE=data.expenses.reduce(function(s,r){return s+r.usd;},0);
+  var ob=data.ob, obUSD=ob?ob.usd:0, obV=ob?(ob.type==='profit'?1:-1)*obUSD:0;
+  var inc=tD+tM+(obV>0?obV:0), out=tC+tE+(obV<0?Math.abs(obV):0), net=inc-out;
+
+  if(ob){
+    document.getElementById('ob_type').value=ob.type;
+    document.getElementById('ob_amount').value=ob.usd;
+    var st=document.getElementById('ob_status');
+    st.textContent=(ob.type==='profit'?t('ob_profit_saved'):t('ob_loss_saved'))+fmt(ob.usd);
+    st.style.color=ob.type==='profit'?'#4ade80':'#f87171';
+  }
+  function set(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
+  set('pl_inc',fmt(inc)); set('pl_out',fmt(out));
+  set('ps_d',fmt(tD)); set('ps_m',fmt(tM)); set('ps_c',fmt(tC)); set('ps_e',fmt(tE));
+  var nb=document.getElementById('pl_netBox');
+  nb.className='pl-net '+(net>0?'profit':net<0?'loss':'zero');
+  document.getElementById('pl_netLbl').textContent=net>0?t('pl_net_profit'):net<0?t('pl_net_loss'):t('pl_net_even');
+  document.getElementById('pl_netVal').textContent=(net>=0?'':'-')+fmt(Math.abs(net));
+  document.getElementById('pl_netVal').style.color=net>0?'#4ade80':net<0?'#f87171':'#fbbf24';
+  if(ob){
+    document.getElementById('pl_ob_lbl').textContent='ð '+(ob.type==='profit'?t('opt_profit'):t('opt_loss'));
+    document.getElementById('pl_ob_val').textContent=(ob.type==='profit'?'+ ':'- ')+fmt(obUSD);
+    document.getElementById('pl_ob_val').className='bd-v '+(ob.type==='profit'?'pos':'neg');
+  }
+  set('pl_d_val','+ '+fmt(tD)); set('pl_m_val','+ '+fmt(tM));
+  set('pl_c_val','- '+fmt(tC)); set('pl_e_val','- '+fmt(tE));
+  document.getElementById('pl_net_val').textContent=(net>=0?'+ ':'- ')+fmt(Math.abs(net));
+  document.getElementById('pl_net_val').className='bd-v '+(net>0?'pos':net<0?'neg':'neu');
+  var cats={};
+  data.expenses.forEach(function(x){cats[x.category]=(cats[x.category]||0)+x.usd;});
+  document.getElementById('pl_expCats').innerHTML=Object.entries(cats).sort(function(a,b){return b[1]-a[1];}).map(function(kv){
+    return '<div class="bd-r"><span class="bd-l">ð¸ '+kv[0]+'</span><span class="bd-v neg">- '+fmt(kv[1])+'</span></div>';
+  }).join('')||'<div style="color:var(--gr);text-align:center;padding:10px;font-size:12px">'+t('empty')+'</div>';
+}
+
+// ===== PAYMENTS =====
+function loadPayLists(){
+  var pc=document.getElementById('pay_creditor'), rd=document.getElementById('rec_debtor');
+  pc.innerHTML='<option value="">'+t('lb_selOpt')+'</option>'+data.creditors.map(function(c){return '<option value="'+c.id+'">'+c.name+' ('+fmt(c.usd)+')</option>';}).join('');
+  rd.innerHTML='<option value="">'+t('lb_selOpt')+'</option>'+data.debtors.map(function(d){return '<option value="'+d.id+'">'+d.name+' ('+fmt(d.usd)+')</option>';}).join('');
+}
+function makePayment(e){
+  e.preventDefault();
+  var cid=parseInt(document.getElementById('pay_creditor').value), a=parseFloat(document.getElementById('pay_amt').value), d=document.getElementById('pay_date').value, note=document.getElementById('pay_note').value.trim();
+  var cr=data.creditors.find(function(c){return c.id===cid;});
+  if(!cr)return;
+  data.payments.push({id:Date.now(),type:'pay',name:cr.name,creditorId:cid,usd:a,date:d,note:note});
+  data.transactions.push({id:Date.now(),type:t('lb_payTitle'),name:cr.name,usd:a,date:d});
+  cr.usd=Math.max(0,cr.usd-a);
+  save(); e.target.reset(); document.getElementById('pay_date').value=TODAY; loadPayLists(); renderCreditors(); renderPayHist();
+}
+function receivePayment(e){
+  e.preventDefault();
+  var did=parseInt(document.getElementById('rec_debtor').value), a=parseFloat(document.getElementById('rec_amt').value), d=document.getElementById('rec_date').value, note=document.getElementById('rec_note').value.trim();
+  var db=data.debtors.find(function(x){return x.id===did;});
+  if(!db)return;
+  data.payments.push({id:Date.now(),type:'rec',name:db.name,debtorId:did,usd:a,date:d,note:note});
+  data.transactions.push({id:Date.now(),type:t('lb_recTitle'),name:db.name,usd:a,date:d});
+  db.usd=Math.max(0,db.usd-a);
+  save(); e.target.reset(); document.getElementById('rec_date').value=TODAY; loadPayLists(); renderDebtors(); renderPayHist();
+}
+function renderPayHist(){
+  var c=document.getElementById('payHistList');
+  if(!data.payments.length){c.innerHTML='<div class="empty-box"><div class="ei">ð</div><p>'+t('empty')+'</p></div>';return;}
+  c.innerHTML=[...data.payments].reverse().map(function(p){
+    var isPay=p.type==='pay';
+    return '<div class="ic"><div class="ic-bar" style="background:'+(isPay?'var(--r)':'var(--g)')+'"></div>'+
+      '<div class="ic-top"><span class="ic-name">'+(isPay?'ð¸':'ðµ')+' '+p.name+'</span><span class="ic-amt '+(isPay?'clr':'clg')+'">'+fmt(p.usd)+'</span></div>'+
+      '<div class="ic-meta">'+(isPay?t('lb_payTitle'):t('lb_recTitle'))+' | ð '+p.date+(p.note?' | '+p.note:'')+'</div>'+
+      '<div class="ic-acts"><button class="btn-del" onclick="delPay('+p.id+')">'+t('del')+'</button></div></div>';
+  }).join('');
+}
+function delPay(id){
+  if(!confirm(t('confirmDel')))return;
+  var p=data.payments.find(function(x){return x.id===id;});
+  if(!p)return;
+  if(p.type==='pay'){var cr=data.creditors.find(function(c){return c.id===p.creditorId;});if(cr)cr.usd+=p.usd;}
+  else{var db=data.debtors.find(function(d){return d.id===p.debtorId;});if(db)db.usd+=p.usd;}
+  data.payments=data.payments.filter(function(x){return x.id!==id;});
+  save(); loadPayLists(); renderPayHist(); renderDebtors(); renderCreditors();
+}
+
+// ===== TRANSACTIONS =====
+function renderTransactions(){
+  var c=document.getElementById('transactionsList');
+  if(!data.transactions.length){c.innerHTML='<div class="empty-box"><div class="ei">ð</div><p>'+t('empty')+'</p></div>';return;}
+  c.innerHTML=[...data.transactions].reverse().map(function(r){
+    return '<div class="ic"><div class="ic-top"><span class="ic-name">'+r.name+'</span><span class="ic-amt" style="color:var(--b2)">'+fmt(r.usd)+'</span></div>'+
+      '<div class="ic-meta">ð '+r.type+' | ð '+r.date+'</div></div>';
+  }).join('');
+}
+
+// ===== STATEMENT =====
+function loadStmtList(){
+  var sel=document.getElementById('stmt_person'), names=new Set();
+  data.debtors.forEach(function(d){names.add('D::'+d.name);});
+  data.creditors.forEach(function(c){names.add('C::'+c.name);});
+  sel.innerHTML='<option value="">'+t('lb_selOpt')+'</option>'+[...names].sort().map(function(n){
+    var isD=n.startsWith('D::'), nm=n.substring(3);
+    return '<option value="'+n+'">'+(isD?t('stmt_type_d'):t('stmt_type_c'))+' â '+nm+'</option>';
+  }).join('');
+}
+function stmtDates(){
+  var end=new Date(), start=new Date();
+  start.setDate(start.getDate()-30);
+  document.getElementById('stmt_end').value=end.toISOString().split('T')[0];
+  document.getElementById('stmt_start').value=start.toISOString().split('T')[0];
+}
+function generateStatement(){
+  var pFull=document.getElementById('stmt_person').value, s=document.getElementById('stmt_start').value, en=document.getElementById('stmt_end').value;
+  if(!pFull||!s||!en){alert(t('fill_all'));return;}
+  var isD=pFull.startsWith('D::'), name=pFull.substring(3);
+  var trans=data.transactions.filter(function(x){return x.name===name&&x.date>=s&&x.date<=en;}).sort(function(a,b){return a.date.localeCompare(b.date);});
+  if(!trans.length){document.getElementById('stmtResult').innerHTML='<div class="empty-box"><div class="ei">ð­</div><p>'+t('no_records')+'</p></div>';return;}
+  var bal=0, tD=0, tC=0;
+  var rowsH=trans.map(function(x){
+    var debit=0, credit=0;
+    if(isD){credit=x.usd;bal+=x.usd;tC+=x.usd;}
+    else{debit=x.usd;bal-=x.usd;tD+=x.usd;}
+    return '<tr><td>'+x.date+'</td><td>'+x.type+'</td>'+
+      '<td class="dbt">'+(debit>0?fmt(debit):'-')+'</td>'+
+      '<td class="cdt">'+(credit>0?fmt(credit):'-')+'</td>'+
+      '<td style="font-weight:700">'+fmt(Math.abs(bal))+' '+(bal>=0?t('stmt_debit'):t('stmt_credit'))+'</td></tr>';
+  }).join('');
+  document.getElementById('stmtResult').innerHTML=
+    '<div class="stmt-wrap">'+
+    '<div class="stmt-hdr"><div class="stmt-co">ð¢ï¸ HAJI KOCHAI OIL & SUGAR LTD</div>'+
+    '<div class="stmt-ttl">ð '+t('stmt_title')+'</div>'+
+    '<div style="font-size:11px;color:var(--gr)">'+s+' â '+en+'</div></div>'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;background:var(--lt);padding:11px;border-radius:9px;margin-bottom:13px">'+
+    '<div><div style="font-size:10px;color:var(--gr);margin-bottom:2px">'+t('lb_stPerson')+'</div><div style="font-size:13px;font-weight:700">'+name+'</div></div>'+
+    '<div><div style="font-size:10px;color:var(--gr);margin-bottom:2px">'+t('lb_nt0')+'/'+t('lb_nt1')+'</div><div style="font-size:13px;font-weight:700">'+(isD?t('stmt_type_d'):t('stmt_type_c'))+'</div></div>'+
+    '<div><div style="font-size:10px;color:var(--gr);margin-bottom:2px">Total</div><div style="font-size:13px;font-weight:700">'+trans.length+'</div></div>'+
+    '<div><div style="font-size:10px;color:var(--gr);margin-bottom:2px">Date</div><div style="font-size:13px;font-weight:700">'+TODAY+'</div></div></div>'+
+    '<div class="stmt-sum3">'+
+    '<div class="ss-c op"><div class="ss-l">'+t('stmt_open')+'</div><div class="ss-v">$0</div></div>'+
+    '<div class="ss-c md"><div class="ss-l">'+t('stmt_change')+'</div><div class="ss-v">'+fmt(Math.abs(tC-tD))+'</div></div>'+
+    '<div class="ss-c cl"><div class="ss-l">'+t('stmt_close')+'</div><div class="ss-v">'+fmt(Math.abs(bal))+'</div></div></div>'+
+    '<table class="stmt-tbl"><thead><tr><th>'+t('stmt_col1')+'</th><th>'+t('stmt_col2')+'</th><th>'+t('stmt_col3')+'</th><th>'+t('stmt_col4')+'</th><th>'+t('stmt_col5')+'</th></tr></thead>'+
+    '<tbody>'+rowsH+'</tbody></table>'+
+    '<div style="text-align:center;font-size:10px;color:var(--gr);border-top:1px solid var(--br);padding-top:9px">'+t('stmt_footer')+'</div>'+
+    '<div style="display:flex;gap:8px;margin-top:10px">'+
+    '<button class="btn-print" onclick="printStmt()" style="flex:1">'+t('btn_print')+'</button>'+
+    '<button class="btn-print" onclick="shareStmt()" style="flex:1;background:linear-gradient(135deg,#15803d,#22c55e)">'+t('btn_share')+'</button>'+
+    '</div></div>';
+}
+
+// ===== PRINT STATEMENT =====
+function printStmt(){
+  var content=document.querySelector('.stmt-wrap');
+  if(!content){alert(t('select_first'));return;}
+  var pw=window.open('','_blank','width=800,height=600');
+  pw.document.write('<!DOCTYPE html><html dir="'+T[lang].dir+'"><head><meta charset="UTF-8"><title>Statement</title>'+
+  '<style>*{margin:0;padding:0;box-sizing:border-box;}body{font-family:Arial,sans-serif;direction:'+T[lang].dir+';padding:20px;color:#000;background:white;}'+
+  'table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:14px;}'+
+  'thead{background:#1e293b;color:white;}th{padding:9px 5px;text-align:center;}'+
+  'td{padding:7px 5px;text-align:center;border-bottom:1px solid #ddd;}'+
+  'tr:nth-child(even) td{background:#f9f9f9;}'+
+  '.dbt{color:#dc2626;font-weight:700;}.cdt{color:#16a34a;font-weight:700;}'+
+  '.sign-area{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px;}'+
+  '.sign-box{border-top:1px solid #000;padding-top:6px;text-align:center;font-size:11px;color:#555;}'+
+  '.footer{text-align:center;font-size:10px;color:#888;border-top:1px solid #ddd;padding-top:9px;margin-top:9px;}'+
+  '@media print{button{display:none!important;}}</style></head><body>'+
+
+content.innerHTML.replace(/<button[^>]*>[\s\S]*?</button>/g,ââ)+
+â<div class="sign-area"><div class="sign-box">â+t(âsign1â)+â</div><div class="sign-box">â+t(âsign2â)+â</div></div>â+
+â<div class="footer">ð¢ï¸ HAJI KOCHAI OIL & SUGAR LTD | â+t(âstmt_footerâ)+â</div>â+
+â</body></html>â);
+pw.document.close(); pw.focus();
+setTimeout(function(){pw.print();},600);
+}
+function shareStmt(){
+if(navigator.share){navigator.share({title:âHaji Kochai Statementâ,text:âAccount Statementâ}).catch(function(){});}
+else{printStmt();}
+}
+
+// ===== REPORTS =====
+function updateRep(){
+var tD=data.debtors.reduce(function(s,r){return s+r.usd;},0);
+var tM=data.commodities.reduce(function(s,r){return s+r.usd;},0);
+var tC=data.creditors.reduce(function(s,r){return s+r.usd;},0);
+var tE=data.expenses.reduce(function(s,r){return s+r.usd;},0);
+var ob=data.ob, obV=ob?(ob.type===âprofitâ?1:-1)*ob.usd:0;
+var net=tD+tM-tC-tE+obV;
+function set(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
+set(ârep_dâ,fmt(tD)); set(ârep_mâ,fmt(tM)); set(ârep_aâ,fmt(tD+tM));
+set(ârep_câ,fmt(tC)); set(ârep_eâ,fmt(tE));
+var rn=document.getElementById(ârep_netâ);
+rn.textContent=(net>=0?ââ:â-â)+fmt(Math.abs(net));
+rn.className=ârep-val â+(net>0?âclgâ:net<0?âclrâ:ââ);
+var cats={};
+data.expenses.forEach(function(x){cats[x.category]=(cats[x.category]||0)+x.usd;});
+document.getElementById(ârep_catsâ).innerHTML=Object.entries(cats).sort(function(a,b){return b[1]-a[1];}).map(function(kv){
+return â<div class="rep-r"><span class="rep-l">ð¸ â+kv[0]+â</span><span class="rep-val clr">â+fmt(kv[1])+â</span></div>â;
+}).join(ââ)||â<div style="color:var(--gr);text-align:center;padding:10px;font-size:12px">â+t(âemptyâ)+â</div>â;
+}
+function exportData(){
+var blob=new Blob([JSON.stringify(data,null,2)],{type:âapplication/jsonâ});
+var a=document.createElement(âaâ); a.href=URL.createObjectURL(blob); a.download=âHajiKochai-â+TODAY+â.jsonâ; a.click();
+alert(t(âexportedâ));
+}
+function clearAll(){
+if(!confirm(t(âconfirmClearâ)))return;
+if(!confirm(t(âconfirmClear2â)))return;
+[âhk_dâ,âhk_câ,âhk_mâ,âhk_eâ,âhk_tâ,âhk_pâ,âhk_obâ].forEach(function(k){localStorage.removeItem(k);});
+data={debtors:[],creditors:[],commodities:[],expenses:[],transactions:[],payments:[],ob:null};
+renderAll(); alert(t(âclearedâ));
+}
+
+// ===== TABS =====
+function switchTab(id,btn){
+document.querySelectorAll(â.ntabâ).forEach(function(b){b.classList.remove(âonâ);});
+document.querySelectorAll(â.tbâ).forEach(function(t){t.classList.remove(âonâ);});
+btn.classList.add(âonâ);
+document.getElementById(âtab_â+id).classList.add(âonâ);
+if(id===âprofitlossâ)renderPL();
+if(id===âreportsâ)updateRep();
+if(id===âtransactionsâ)renderTransactions();
+if(id===âstatementsâ){loadStmtList();}
+if(id===âpaymentsâ){loadPayLists();renderPayHist();}
+}
+function del(key,id,cb){
+if(!confirm(t(âconfirmDelâ)))return;
+data[key]=data[key].filter(function(r){return r.id!==id;});
+save(); cb();
+}
+
+// ===== INIT =====
+setLang(lang);
+updateDash();
+renderDebtors(); renderCreditors(); renderCommodities(); renderExpenses();
+</script>
+
+</body>
+</html>
