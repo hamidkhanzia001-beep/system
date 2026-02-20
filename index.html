@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haji Kochai Oil & Sugar Ltd</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="login-screen" class="login-overlay">
+        <div class="login-box">
+            <img src="logo.png" style="width: 70px; border-radius: 50%; margin-bottom: 10px;">
+            <h2>Haji Kochai Ltd</h2>
+            <input type="password" id="password-input" placeholder="پاسورډ داخل کړئ">
+            <button onclick="checkPassword()" class="btn">ننوتل</button>
+        </div>
+    </div>
+
+    <div class="container" id="main-app" style="display: none;">
+        <header class="app-header">
+            <img src="logo.png" alt="Logo" class="company-logo">
+            <h2 class="company-name">Haji Kochai Oil & Sugar Ltd</h2>
+            <p class="app-subtitle">د مالي مدیریت سیسټم</p>
+        </header>
+
+        <div class="balance-container">
+            <h4>اوسنی موجودي</h4>
+            <h1 id="balance">0.00 $</h1>
+        </div>
+
+        <div class="no-print">
+            <form id="form">
+                <input type="text" id="text" placeholder="معامله (مثلاً: د بورې خرڅلاو)" required>
+                <input type="number" id="amount" step="0.01" placeholder="مقدار (+ عاید، - مصرف)" required>
+                <input type="date" id="date" required>
+                <button class="btn">ثبتول</button>
+            </form>
+            <button id="print-btn" class="btn print-btn">د رسمي راپور چاپول</button>
+        </div>
+
+        <h3>تاریخچه</h3>
+        <ul id="list" class="list"></ul>
+
+        <div class="report-footer only-print">
+            <div class="footer-grid">
+                <div class="signature-box">
+                    <p>مالي مدیر (Accountant)</p>
+                    <div class="manual-sign-space"></div>
+                    <div class="sign-line"></div>
+                </div>
+                <div class="stamp-box">
+                    <img src="stamp.png" class="actual-stamp">
+                </div>
+                <div class="signature-box">
+                    <div class="manual-sign-space"></div>
+                    <div class="sign-line"></div>
+                    <div class="ceo-info">
+                        <span class="ceo-name">Nesar Ahmad Kochai</span>
+                        <span class="ceo-title">CEO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
